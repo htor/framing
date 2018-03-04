@@ -1,7 +1,7 @@
-# canvas-editor 
+# scratch
 
-Interactive canvas editor. Inspired by
-https://hydra-editor.glitch.me by https://github.com/ojack.
+A simple editor for live coding canvas in the browser. 
+Inspired by https://hydra-editor.glitch.me made by https://github.com/ojack.
 
 # installing
 

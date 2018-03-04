@@ -1,9 +1,9 @@
 {
-  "name": "canvas-editor",
+  "name": "scratch",
   "version": "0.0.1",
   "description": "",
   "private": true,
-  "main": "index.html",
+  "main": "index.js",
   "dependencies": {
   },
   "devDependencies": {

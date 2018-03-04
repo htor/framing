@@ -14,9 +14,7 @@ textarea {
     resize: none;
     overflow: hidden;
     background: #e1e1e1;
-    color: black;
     padding: 0;
-    opacity: .5;
     font-family: monospace;
     font-size: 1.3em;
     border: 0;
@@ -26,7 +24,6 @@ output {
     position: absolute;
     bottom: 2em;
     left: 2em;
-    opacity: .5;
     font-family: monospace;
     font-size: 1.2em;
     background: #e1e1e1;
