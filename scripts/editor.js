@@ -8,7 +8,8 @@ const execution = { code: '', result: null }
 const focus = () => input.focus()
 
 const register = event => {
-    if (event.key === 'Enter' && event.metaKey) {
+    if ((event.metaKey || event.ctrlKey) &&
+        event.key === 'Enter') {
         execution.code = input.innerText
     } else if (event.key === 'Tab') {
         event.preventDefault()
