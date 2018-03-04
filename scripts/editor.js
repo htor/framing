@@ -1,13 +1,16 @@
 import { graphics } from './graphics'
 import { print } from './tools'
 
-const focus = () => {
-    let textarea = document.querySelector('textarea')
-    textarea.focus()
+const textarea = document.querySelector('textarea')
+const output = document.querySelector('output')
+const execution = {
+    code: '',
+    result: null
 }
 
-const resize = event => {
-    let textarea = document.querySelector('textarea')
+const focus = () => textarea.focus()
+
+const resize = () => {
     let lines = textarea.value.split('\n')
     let lineno = lines.length
     let longestline = lines.reduce((acc, x) =>
@@ -20,25 +23,27 @@ const resize = event => {
     return event
 }
 
-const evaluate = event => {
-    let textarea = document.querySelector('textarea')
-    let output = document.querySelector('output')
-    let lines = textarea.value.split('\n')
+const register = event => {
     if (event.key === 'Enter' && event.metaKey) {
-        let code = lines.filter(line => !line.startsWith('//')).join('\n')
-        let result
-        try {   
-            result = eval(code)
-        } catch (error) {
-            result = error.message
-        } finally {
-            print(result)
-            output.innerHTML = JSON.stringify(result, null, 4);
-        }
+        execution.code = textarea.value
     } else if (event.key === 'Tab') {
         event.preventDefault()
         textarea.value = `${textarea.value}    `
     }
+    return event
 }
 
-export { focus, resize, evaluate }
+const evaluate = () => {
+    let code = execution.code.split('\n')
+        .filter(line => !line.startsWith('//')).join('\n')
+    let result
+    try {   
+        result = eval(code)
+    } catch (error) {
+        result = error.message
+    } finally {
+        output.innerHTML = result
+    }
+}
+
+export { focus, resize, register, evaluate }
