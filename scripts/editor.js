@@ -1,34 +1,18 @@
 import { graphics } from './graphics'
 import { print } from './tools'
 
-const textarea = document.querySelector('textarea')
+const input = document.querySelector('code')
 const output = document.querySelector('output')
-const execution = {
-    code: '',
-    result: null
-}
+const execution = { code: '', result: null }
 
-const focus = () => textarea.focus()
-
-const resize = () => {
-    let lines = textarea.value.split('\n')
-    let lineno = lines.length
-    let longestline = lines.reduce((acc, x) =>
-        acc.length > x.length ? acc : x
-    )
-    let metrics = graphics.measureText(longestline + ' ');
-    textarea.style.width = `${metrics.width}px`
-    textarea.style.height = `auto`
-    textarea.style.height = `${textarea.scrollHeight}px`
-    return event
-}
+const focus = () => input.focus()
 
 const register = event => {
     if (event.key === 'Enter' && event.metaKey) {
-        execution.code = textarea.value
+        execution.code = input.innerText
     } else if (event.key === 'Tab') {
         event.preventDefault()
-        textarea.value = `${textarea.value}    `
+        input.innerText= `${input.innerText}    `
     }
     return event
 }
@@ -46,4 +30,4 @@ const evaluate = () => {
     }
 }
 
-export { focus, resize, register, evaluate }
+export { focus, register, evaluate }
