@@ -17,10 +17,13 @@ window.frect = (...args) => graphics.fillRect(...args)
 window.font = (arg) => graphics.font = arg
 window.sstyle = (arg) => graphics.strokeStyle = arg
 window.fstyle = (arg) => graphics.fillStyle = arg
+window.font = (arg) => graphics.font = arg
 window.linew = (arg) => graphics.lineWidth = arg
 window.linec = (arg) => graphics.lineCap = arg
 window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
 window.trans = (...args) => graphics.translate(...args)
+window.ftext = (...args) => graphics.fillText(...args)
+window.stext = (...args) => graphics.strokeText(...args)
 window.second = () => new Date().getSeconds()
 window.millis = () => (new Date()) - startDate
 window.fps = (arg) => window.frameRate = arg

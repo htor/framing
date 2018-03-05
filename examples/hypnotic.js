@@ -1,3 +1,4 @@
+// generate hypnotic pattern
 let psize = 13, achan = 255, tfactor = 0.000028
 frect(0,0,w,h)
 for (var x=0;x<w;x+= psize) {

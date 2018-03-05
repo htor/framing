@@ -1,3 +1,4 @@
+// draw two grascale gradients
 let psize=10
 frect(0,0,w,h)
 
