@@ -2,6 +2,21 @@
 
 A simple editor for live coding with JS.
 
+![scratch: editor for live coding](examples/screen.png)
+
+# usage 
+
+Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
+Results are placed in the lower left corner.
+The code is evaluated 60 times a second in the global scope and you have 
+access to all of the browser APIs to build your thing.
+
+For convenience, there is a global object `ctx`
+(of type [CanvasRenderingContext2D][1])
+controlling the a canvas 
+covering the entire window, plus a group of aliases for some common canvas 
+operations. See `index.js` for the aliases.
+
 # installing
 
 Clone this repo and with [npm](https://npmjs.com/) do:
@@ -12,21 +27,6 @@ npm start
 ```
 
 It should open in your browser.
-
-# usage 
-
-Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
-Results are placed in the lower left corner.
-The code is evaluated 60 times a second in the global scope and you have 
-access to all of the browser APIs to build your thing.
-
-
-# api
-For convenience, there is a global object `ctx`
-(of type [CanvasRenderingContext2D][1])
-controlling the a canvas 
-covering the entire window, plus a group of aliases for some common canvas 
-operations. See `index.js` for the aliases.
 
 
 # inspiration
