@@ -7,6 +7,8 @@ window.w = graphics.canvas.height
 window.h = graphics.canvas.width
 window.startDate = new Date()
 window.frameRate = 60
+window.begin = () => graphics.beginPath()
+window.close = () => graphics.closePath()
 window.stroke = () => graphics.stroke()
 window.line = (...args) => graphics.lineTo(...args)
 window.move = (...args) => graphics.moveTo(...args)
