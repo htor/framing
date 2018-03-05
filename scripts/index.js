@@ -1,7 +1,8 @@
 import { graphics } from './graphics'
-import { compose, print, random,  } from './tools'
+import { random } from './tools'
 import * as editor from './editor'
 
+window.ctx = graphics
 window.w = graphics.canvas.height
 window.h = graphics.canvas.width
 window.startDate = new Date()
@@ -14,6 +15,8 @@ window.frect = (...args) => graphics.fillRect(...args)
 window.font = (arg) => graphics.font = arg
 window.sstyle = (arg) => graphics.strokeStyle = arg
 window.fstyle = (arg) => graphics.fillStyle = arg
+window.linew = (arg) => graphics.lineWidth = arg
+window.linec = (arg) => graphics.lineCap = arg
 window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
 window.trans = (...args) => graphics.translate(...args)
 window.second = () => new Date().getSeconds()
@@ -24,16 +27,13 @@ window.sin = Math.sin
 window.cos = Math.cos
 window.abs = Math.abs
 window.map = (e,t,n,r,i) => r+(i-r)*((e-t)/(n-t))
-window.onresize = graphics.resize
 window.onclick = editor.focus
-window.onkeydown = editor.register
 window.onload = editor.focus
-
-const loop = () => {
+window.onkeydown = editor.register
+window.onresize = graphics.resize
+window.requestAnimationFrame(function loop() {
     graphics.resize()
     editor.evaluate()
     setTimeout(requestAnimationFrame, 1000 / frameRate, loop)
-}
-
-loop()
+})
 
