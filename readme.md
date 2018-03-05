@@ -20,3 +20,7 @@ It should open in your browser.
 # usage 
 
 Press Cmd + Enter or Control + Enter to evaluate all the code in the window.
+
+# license
+
+MIT
