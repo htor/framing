@@ -4,6 +4,8 @@ body {
     height: 100%;
     margin: 0;
     overflow: hidden;
+    font-family: monospace;
+    font-size: 1.2em;
 }
 
 code {
@@ -14,15 +16,11 @@ code {
     margin: 0;
     outline: none;
     background: #e1e1e1;
-    font-family: monospace;
-    font-size: 1.3em;
 }
 
 output {
     position: absolute;
     bottom: 2em;
     left: 2em;
-    font-family: monospace;
-    font-size: 1.3em;
     background: #e1e1e1;
 }

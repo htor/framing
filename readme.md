@@ -1,7 +1,10 @@
 # scratch
 
 A simple editor for live coding canvas in the browser. 
-Inspired by https://hydra-editor.glitch.me made by https://github.com/ojack.
+
+Inspired by https://hydra-editor.glitch.me made by https://github.com/ojack
+and the programming module at https://www.khanacademy.org/computer-programming/new/pjs
+powered by http://processingjs.org/.
 
 # installing
 
