@@ -1,5 +1,5 @@
 import { graphics } from './graphics'
-import { random } from './tools'
+import { random, compose } from './tools'
 import * as editor from './editor'
 
 window.ctx = graphics
@@ -7,6 +7,7 @@ window.w = graphics.canvas.height
 window.h = graphics.canvas.width
 window.startDate = new Date()
 window.frameRate = 60
+window.frameReset = true
 window.begin = () => graphics.beginPath()
 window.close = () => graphics.closePath()
 window.stroke = () => graphics.stroke()
@@ -18,27 +19,30 @@ window.font = (arg) => graphics.font = arg
 window.sstyle = (arg) => graphics.strokeStyle = arg
 window.fstyle = (arg) => graphics.fillStyle = arg
 window.font = (arg) => graphics.font = arg
-window.linew = (arg) => graphics.lineWidth = arg
-window.linec = (arg) => graphics.lineCap = arg
-window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
-window.trans = (...args) => graphics.translate(...args)
+window.lwidth = (arg) => graphics.lineWidth = arg
+window.lcap = (arg) => graphics.lineCap = arg
 window.ftext = (...args) => graphics.fillText(...args)
 window.stext = (...args) => graphics.strokeText(...args)
+window.push = () => graphics.save()
+window.pop = () => graphics.restore()
+window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
+window.tslate = (...args) => graphics.translate(...args)
 window.second = () => new Date().getSeconds()
 window.millis = () => (new Date()) - startDate
 window.fps = (arg) => window.frameRate = arg
+window.freset = (arg) => window.frameReset = arg
 window.rand = random
 window.sin = Math.sin
 window.cos = Math.cos
 window.abs = Math.abs
 window.map = (e,t,n,r,i) => r+(i-r)*((e-t)/(n-t))
 window.onclick = editor.focus
-window.onload = editor.focus
+window.onload = compose(graphics.resize, editor.focus)
 window.onkeydown = editor.register
 window.onresize = graphics.resize
 window.requestAnimationFrame(function loop() {
-    graphics.resize()
+    if (frameReset)
+        graphics.clearRect(0, 0, w, h) 
     editor.evaluate()
     setTimeout(requestAnimationFrame, 1000 / frameRate, loop)
 })
-
