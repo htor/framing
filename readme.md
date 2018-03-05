@@ -4,6 +4,11 @@ A simple editor for live coding with JS.
 
 ![scratch: editor for live coding](examples/screen.png)
 
+# example 
+
+You can test the editor here:
+https://hermantorjussen.no/scratch
+
 # usage 
 
 Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
