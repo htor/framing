@@ -2,7 +2,7 @@ import { graphics } from './graphics'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
-let code = '';
+let code = '', prevCode = '';
 
 const focus = () => input.focus()
 
@@ -21,8 +21,10 @@ const evaluate = () => {
     let result
     try {   
         result = eval(code)
+        prevCode = code
     } catch (error) {
         result = error.message
+        eval(prevCode)
     } finally {
         output.innerHTML = result
     }
