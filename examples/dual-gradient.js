@@ -1,6 +1,6 @@
 // draw two grascale gradients
-let psize=10
-frect(0,0,w,h)
+let psize=20
+bground('black')
 
 for (let x=0;x<w;x+=psize) {
  for (let y=0;y<h/2;y+=psize) {

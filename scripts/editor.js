@@ -33,7 +33,9 @@ const setFavicon = () => {
     let iconCanvas = document.createElement('canvas')
     let iconGraphics = iconCanvas.getContext('2d')
     let length = Math.min(graphics.canvas.width, graphics.canvas.height)
-    iconGraphics.putImageData(graphics.getImageData(0, 0, length, length), 0, 0)
+    iconCanvas.width = iconCanvas.height = length
+    iconGraphics.drawImage(graphics.canvas, 0, 0, length, length, 
+        0, 0, length, length)
     favicon.href = iconCanvas.toDataURL();
 }
 

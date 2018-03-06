@@ -18,6 +18,7 @@ window.frect = (...args) => graphics.fillRect(...args)
 window.font = (arg) => graphics.font = arg
 window.sstyle = (arg) => graphics.strokeStyle = arg
 window.fstyle = (arg) => graphics.fillStyle = arg
+window.bground = (arg) => graphics.canvas.style.background = arg
 window.font = (arg) => graphics.font = arg
 window.lwidth = (arg) => graphics.lineWidth = arg
 window.lcap = (arg) => graphics.lineCap = arg
