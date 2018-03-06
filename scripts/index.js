@@ -6,7 +6,7 @@ window.ctx = graphics
 window.w = graphics.canvas.height
 window.h = graphics.canvas.width
 window.startDate = new Date()
-window.frameRate = 60
+window.frameRate = 120
 window.frameReset = true
 window.begin = () => graphics.beginPath()
 window.close = () => graphics.closePath()
@@ -28,6 +28,7 @@ window.push = () => graphics.save()
 window.pop = () => graphics.restore()
 window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
 window.tslate = (...args) => graphics.translate(...args)
+window.scale = (...args) => graphics.scale(...args)
 window.treset = () => graphics.setTransform(1, 0, 0, 1, 0, 0)
 window.second = () => new Date().getSeconds()
 window.millis = () => (new Date()) - startDate
