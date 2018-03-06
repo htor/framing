@@ -28,6 +28,7 @@ window.push = () => graphics.save()
 window.pop = () => graphics.restore()
 window.rotate = (degs) => graphics.rotate(degs * Math.PI / 180)
 window.tslate = (...args) => graphics.translate(...args)
+window.treset = () => graphics.setTransform(1, 0, 0, 1, 0, 0)
 window.second = () => new Date().getSeconds()
 window.millis = () => (new Date()) - startDate
 window.fps = (arg) => window.frameRate = arg
@@ -36,7 +37,10 @@ window.rand = random
 window.sin = Math.sin
 window.cos = Math.cos
 window.abs = Math.abs
+window.min = Math.min
+window.max = Math.max
 window.map = (e,t,n,r,i) => r+(i-r)*((e-t)/(n-t))
+window.rgba = (...colors) => `rgba(${[...colors]})`
 window.onclick = editor.focus
 window.onload = compose(graphics.resize, editor.focus)
 window.onkeydown = editor.register
