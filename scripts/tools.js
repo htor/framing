@@ -19,4 +19,10 @@ const rgbaString = (rgba) => {
         .join() + ')'
 }
 
-export { compose, print, random, randomColor, rgbaString }
+export { 
+    compose, 
+    print, 
+    random, 
+    randomColor, 
+    rgbaString
+}
