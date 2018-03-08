@@ -13,6 +13,7 @@ const init = () => {
     if (base64Code) {
         code = input.innerText = fromBase64(base64Code)
         evaluate()
+        setFavicon()
     }
 }
 
@@ -21,7 +22,7 @@ const register = event => {
         event.key === 'Enter') {
         code = input.innerText
         setQueryParam('id', toBase64(code))
-        setTimeout(setFavicon, 1000)
+        setFavicon()
     } else if (event.key === 'Tab') {
         event.preventDefault()
         input.innerText= `${input.innerText}    `
@@ -42,14 +43,16 @@ const evaluate = () => {
 }
 
 const setFavicon = () => {
-    let favicon = document.querySelector('[rel=icon]');
-    let iconCanvas = document.createElement('canvas')
-    let iconGraphics = iconCanvas.getContext('2d')
-    let length = Math.min(graphics.canvas.width, graphics.canvas.height)
-    iconCanvas.width = iconCanvas.height = length
-    iconGraphics.drawImage(graphics.canvas, 0, 0, length, length, 
-        0, 0, length, length)
-    favicon.href = iconCanvas.toDataURL();
+    setTimeout(() => {
+        let favicon = document.querySelector('[rel=icon]');
+        let iconCanvas = document.createElement('canvas')
+        let iconGraphics = iconCanvas.getContext('2d')
+        let length = Math.min(graphics.canvas.width, graphics.canvas.height)
+        iconCanvas.width = iconCanvas.height = length
+        iconGraphics.drawImage(graphics.canvas, 0, 0, length, length, 
+            0, 0, length, length)
+        favicon.href = iconCanvas.toDataURL();
+    }, 1000)
 }
 
 export { init, focus, register, evaluate }
