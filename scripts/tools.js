@@ -19,10 +19,25 @@ const rgbaString = (rgba) => {
         .join() + ')'
 }
 
+const toBase64 = (str) => 
+    btoa(unescape(encodeURIComponent(str)))
+
+const fromBase64 = (str) => 
+    decodeURIComponent(escape(atob(str)))
+
+const setQueryParam = (name, value) => {
+    let newurl = window.location.protocol + '//' + 
+        window.location.host + window.location.pathname + `?${name}=${value}`
+    window.history.pushState({ path: newurl }, '', newurl)
+}
+
 export { 
     compose, 
     print, 
     random, 
     randomColor, 
-    rgbaString
+    rgbaString,
+    toBase64,
+    fromBase64,
+    setQueryParam
 }

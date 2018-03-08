@@ -1,4 +1,5 @@
 import { graphics } from './graphics'
+import { toBase64, fromBase64, setQueryParam } from './tools'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
@@ -6,10 +7,20 @@ let code = '', prevCode = '';
 
 const focus = () => input.focus()
 
+const init = () => {
+    let searchParams = new URLSearchParams(window.location.search)
+    let base64Code = searchParams.get('id')
+    if (base64Code) {
+        code = input.innerText = fromBase64(base64Code)
+        evaluate()
+    }
+}
+
 const register = event => {
     if ((event.metaKey || event.ctrlKey) &&
         event.key === 'Enter') {
         code = input.innerText
+        setQueryParam('id', toBase64(code))
         setTimeout(setFavicon, 1000)
     } else if (event.key === 'Tab') {
         event.preventDefault()
@@ -41,5 +52,4 @@ const setFavicon = () => {
     favicon.href = iconCanvas.toDataURL();
 }
 
-
-export { focus, register, evaluate }
+export { init, focus, register, evaluate }
