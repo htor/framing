@@ -6,7 +6,7 @@ begin()
 for(x=0;x<w;x+=s){
  for(y=0;y<h;y+=s){
    x2 = max(y&x,y)^(t&h)
-   y2 = y|x>>y^(t * 0.002)
+   y2 = y|x>>y^(t * 0.02)
    move(x, y)
    line(x2,y2)
 }}
