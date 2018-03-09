@@ -1,26 +1,24 @@
 # scratch
 
-A simple editor for live coding with JS.
+A simple editor for live coding graphics with JS.
+Try out the editor here:
+
+https://hermantorjussen.no/scratch
 
 ![scratch: editor for live coding](examples/screen.png)
-
-# example 
-
-You can test the editor here:
-https://hermantorjussen.no/scratch
 
 # usage 
 
 Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
-Results are placed in the lower left corner.
-The code is evaluated 60 times a second in the global scope and you have 
-access to all of the browser APIs to build your thing.
+Results are placed in the lower left corner. Back and forward buttons in 
+the browser moves through editing history. Links are sharable.
 
-For convenience, there is a global object `ctx`
-(of type [CanvasRenderingContext2D][1])
-controlling the a canvas 
-covering the entire window, plus a group of aliases for some common canvas 
-operations. See `index.js` for the aliases.
+The code is evaluated 60 times 
+a second in the global scope and you have access to all of the browser APIs 
+to build your thing. There is a group of non-standard functions and properties
+defined in [scripts/index.js](scripts/index.js) for writing more compact
+code, but there is a also global canvas context object `ctx`
+that lets you write normal canvas code if you want.
 
 # installing
 
