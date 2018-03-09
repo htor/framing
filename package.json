@@ -5,6 +5,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "codemirror": "^5.35.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -24,15 +25,15 @@
     "build": "npm run build-js && npm run build-html && npm run build-css && npm run build-root",
     "build-html": "cp *.html dist",
     "build-html-min": "for f in *.html; do htmlclean $f -o dist/$f; done",
-    "build-css": "cat index.css > dist/index.css",
-    "build-css-min": "cat index.css | csso > dist/index.css",
+    "build-css": "cat node_modules/codemirror/theme/pastel-on-dark.css node_modules/codemirror/lib/codemirror.css index.css > dist/index.css",
+    "build-css-min": "cat node_modules/codemirror/theme/pastel-on-dark.css node_modules/codemirror/lib/codemirror.css index.css | csso > dist/index.css",
     "build-js": "browserify scripts/index.js > dist/index.js",
     "build-js-min": "browserify -p [ tinyify --no-flat ] scripts/index.js -t [ babelify --presets [ env ] ] > dist/index.js",
     "build-images": "cp -r images dist",
     "build-root": "cp robots.txt dist",
     "build-min": "npm run build-html-min && npm run build-css-min && npm run build-js-min && npm run build-root",
     "watch-html": "catw index.html -o dist/index.html -v",
-    "watch-css": "catw *.css -o dist/index.css -v",
+    "watch-css": "catw node_modules/codemirror/theme/pastel-on-dark.css node_modules/codemirror/lib/codemirror.css *.css -o dist/index.css -v",
     "watch-js": "watchify scripts/index.js -t [ babelify --presets [ env ] ] -o dist/index.js -dv",
     "watch": "npm run watch-html & npm run watch-css & npm run watch-js",
     "start": "set -m; http-server dist -so & npm run watch; fg",

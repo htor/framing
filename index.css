@@ -12,15 +12,31 @@ code {
     position: absolute;
     top: 2em;
     left: 2em;
-    min-width: 1em;
-    margin: 0;
-    outline: none;
-    background: #e1e1e1;
 }
 
 output {
     position: absolute;
     bottom: 2em;
     left: 2em;
-    background: #e1e1e1;
+    background: #2c2827;
+    color: #ccc;
 }
+
+.CodeMirror.cm-s-pastel-on-dark {
+    background: transparent;
+    height: 100vh;
+    line-height: 1.2;
+}
+
+.CodeMirror-cursor {
+    border-left: 2px solid #a7a7a7 !important;
+}
+
+ .CodeMirror pre {
+    z-index: 0;
+}
+
+.CodeMirror-line span {
+    background: #2c2827;
+}
+

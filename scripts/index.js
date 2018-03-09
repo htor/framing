@@ -43,7 +43,6 @@ window.max = Math.max
 window.map = (e,t,n,r,i) => r+(i-r)*((e-t)/(n-t))
 window.rgba = (...colors) => `rgba(${[...colors]})`
 window.onclick = editor.focus
-window.onkeydown = editor.register
 window.onresize = graphics.resize
 window.onload = compose(graphics.resize, editor.init, editor.focus)
 window.onpopstate = editor.init

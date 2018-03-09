@@ -19,11 +19,25 @@ const setQueryParam = (name, value) => {
     window.history.pushState({ path: newurl }, '', newurl)
 }
 
+const setFavicon = (canvas) => {
+    setTimeout(() => {
+        let favicon = document.querySelector('[rel=icon]')
+        let iconCanvas = document.createElement('canvas')
+        let iconGraphics = iconCanvas.getContext('2d')
+        let length = Math.min(canvas.width, canvas.height)
+        iconCanvas.width = iconCanvas.height = length
+        iconGraphics.drawImage(canvas, 0, 0, length, length, 
+            0, 0, length, length)
+        favicon.href = iconCanvas.toDataURL()
+    }, 1000)
+}
+
 export { 
     compose, 
     print, 
     random, 
     toBase64,
     fromBase64,
-    setQueryParam
+    setQueryParam,
+    setFavicon
 }
