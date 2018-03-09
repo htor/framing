@@ -5,33 +5,27 @@ import 'codemirror/mode/javascript/javascript'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
-const options = {
-    mode: { name: 'javascript', globalVars: true },
-    theme: 'pastel-on-dark',
-    lineWrapping: true,
-    viewportMargin: Infinity,
-    extraKeys: {
-        'Cmd-Enter': (cm) => {
-            code = cm.getValue()
-            setQueryParam('id', toBase64(code))
-            setFavicon(graphics.canvas)
-        },
-        'Shift-Cmd-Enter': (cm) => {
-            let cursor = cm.getCursor()
-            code = cm.getLine(cursor.line)
-            setQueryParam('id', toBase64(code))
-            setFavicon(graphics.canvas)
-        },
-        'Tab': (cm) => {
-            let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
-            cm.replaceSelection(spaces)
-        }
-    }
+let editor, code, prevCode
+
+const tab = (cm) => {
+    let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
+    cm.replaceSelection(spaces)
 }
-const editor = CodeMirror(input, options)
-let code = '', prevCode = ''
+
+const update = (cm) => {
+    code = cm.getValue()
+    setQueryParam('id', toBase64(code))
+    setFavicon(graphics.canvas)
+}
 
 const init = () => {
+    editor = CodeMirror(input, {
+        mode: { name: 'javascript', globalVars: true },
+        theme: 'pastel-on-dark',
+        lineWrapping: true,
+        viewportMargin: Infinity,
+        extraKeys: { 'Cmd-Enter': update, 'Ctrl-Enter': update, 'Tab': tab }
+    })
     let searchParams = new URLSearchParams(window.location.search)
     let base64Code = searchParams.get('id')
     if (base64Code) {
@@ -39,7 +33,7 @@ const init = () => {
         code = decoded
         editor.setValue(code)
     } else {
-        editor.setValue('// scratch ')
+        editor.setValue(' ')
     }
     evaluate()
     setFavicon(graphics.canvas)
