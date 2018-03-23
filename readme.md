@@ -10,8 +10,8 @@ https://hermantorjussen.no/scratch
 # usage 
 
 Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
-Results are placed in the lower left corner. Back and forward buttons in 
-the browser moves through editing history. Links are sharable.
+Results are placed in the lower left corner. Hide/unhide the code with Alt-H. 
+Back and forward buttons in the browser moves through editing history. Links are sharable.
 
 The code is evaluated 60 times 
 a second in the global scope and you have access to all of the browser APIs 

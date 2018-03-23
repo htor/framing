@@ -32,7 +32,7 @@ output {
     border-left: 2px solid #a7a7a7 !important;
 }
 
- .CodeMirror pre {
+.CodeMirror pre {
     z-index: 0;
 }
 
@@ -40,3 +40,6 @@ output {
     background: #2c2827;
 }
 
+.hidden {
+    opacity: 0;    
+}

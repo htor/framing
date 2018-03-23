@@ -24,7 +24,12 @@ const init = () => {
         theme: 'pastel-on-dark',
         lineWrapping: true,
         viewportMargin: Infinity,
-        extraKeys: { 'Cmd-Enter': update, 'Ctrl-Enter': update, 'Tab': tab }
+        extraKeys: { 
+            'Cmd-Enter': update, 
+            'Ctrl-Enter': update, 
+            'Tab': tab,
+            'Alt-H': hide
+        }
     })
     let searchParams = new URLSearchParams(window.location.search)
     let base64Code = searchParams.get('id')
@@ -41,6 +46,12 @@ const init = () => {
 
 const focus = () => 
     editor.focus()
+
+const hide = () => {
+    input.classList.toggle('hidden') 
+    output.classList.toggle('hidden') 
+    editor.focus()
+}
 
 const evaluate = () => {
     let result
