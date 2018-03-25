@@ -1,5 +1,6 @@
 import { graphics } from './graphics'
-import { toBase64, fromBase64, setQueryParam, setFavicon, toggleFullScreen} from './tools'
+import { toBase64, fromBase64, setQueryParam, setFavicon, 
+    toggleFullScreen } from './tools'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/javascript/javascript'
 
@@ -66,6 +67,7 @@ const evaluate = () => {
         result = error.message
         eval(prevCode)
     } finally {
+        result = String(result).replace(/^undefined$/, '')
         output.innerHTML = result
     }
 }
