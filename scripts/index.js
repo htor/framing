@@ -1,3 +1,4 @@
+import * as fixes from './fixes'
 import { graphics } from './graphics'
 import { random, compose } from './tools'
 import * as editor from './editor'
@@ -42,6 +43,7 @@ window.min = Math.min
 window.max = Math.max
 window.map = (e,t,n,r,i) => r+(i-r)*((e-t)/(n-t))
 window.rgba = (...colors) => `rgba(${[...colors].map(c => c.toFixed(0))})`
+
 window.onclick = editor.focus
 window.onresize = graphics.resize
 window.onload = compose(graphics.resize, editor.init, editor.focus)

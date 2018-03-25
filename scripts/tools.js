@@ -13,6 +13,15 @@ const toBase64 = (str) =>
 const fromBase64 = (str) => 
     decodeURIComponent(atob(str))
 
+const vendorPrefix = (str) =>
+    ['', 'ms', 'moz', 'webkit'].map(prefix => prefix + str)
+
+const vendorPrefixed = (prop, target) => {
+    return ['', 'ms', 'moz', 'webkit'].map((p, i) =>
+        p + (i > 0 ? prop.charAt(0).toUpperCase() + prop.slice(1) : prop)
+    ).map(prefixedProp => target[prefixedProp])
+    .filter(prefixed => prefixed)[0]
+}
 const setQueryParam = (name, value) => {
     let newurl = window.location.protocol + '//' + 
         window.location.host + window.location.pathname + `?${name}=${value}`
@@ -32,6 +41,14 @@ const setFavicon = (canvas) => {
     }, 1000)
 }
 
+const toggleFullScreen = (exit) => {
+    if (exit) {
+        document.exitFullscreen()
+    } else {
+        document.documentElement.requestFullscreen()
+    }
+}
+
 export { 
     compose, 
     print, 
@@ -39,5 +56,8 @@ export {
     toBase64,
     fromBase64,
     setQueryParam,
-    setFavicon
+    setFavicon,
+    vendorPrefix,
+    vendorPrefixed,
+    toggleFullScreen 
 }

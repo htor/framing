@@ -1,11 +1,11 @@
 import { graphics } from './graphics'
-import { toBase64, fromBase64, setQueryParam, setFavicon } from './tools'
+import { toBase64, fromBase64, setQueryParam, setFavicon, toggleFullScreen} from './tools'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/javascript/javascript'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
-let editor, code, prevCode
+let editor, code, prevCode, isFull = false
 
 const tab = (cm) => {
     let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
@@ -28,7 +28,11 @@ const init = () => {
             'Cmd-Enter': update, 
             'Ctrl-Enter': update, 
             'Tab': tab,
-            'Alt-H': hide
+            'Alt-H': hide,
+            'Alt-F': () => {
+                toggleFullScreen(isFull)
+                isFull = !isFull
+            }
         }
     })
     let searchParams = new URLSearchParams(window.location.search)
