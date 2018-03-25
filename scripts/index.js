@@ -49,7 +49,7 @@ window.comp = (arg) => graphics.globalCompositeOperation = arg
 window.doffset = (arg) => graphics.lineDashOffset = arg
 window.ldash = (arg) => graphics.setLineDash(arg)
 window.ljoin = (arg) => graphics.lineJoin = arg
-window.shblevel = (arg) => graphics.shadowBlur = arg
+window.shblur = (arg) => graphics.shadowBlur = arg
 window.shcolor = (arg) => graphics.shadowColor = arg
 window.shoffx = (arg) => graphics.shadowOffsetX = arg
 window.shoffy = (arg) => graphics.shadowOffsetY = arg
