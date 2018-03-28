@@ -43,7 +43,7 @@ const init = () => {
         code = decoded
         editor.setValue(code)
     } else {
-        editor.setValue(' ')
+        editor.setValue('')
     }
     evaluate()
     setFavicon(graphics.canvas)
