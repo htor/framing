@@ -1,6 +1,6 @@
 {
-  "name": "scratch",
-  "version": "0.0.1",
+  "name": "scratch-editor",
+  "version": "0.0.2",
   "description": "",
   "private": true,
   "main": "index.js",
@@ -27,7 +27,7 @@
     "build-html-min": "for f in *.html; do htmlclean $f -o dist/$f; done",
     "build-css": "cat node_modules/codemirror/theme/pastel-on-dark.css node_modules/codemirror/lib/codemirror.css index.css > dist/index.css",
     "build-css-min": "cat node_modules/codemirror/theme/pastel-on-dark.css node_modules/codemirror/lib/codemirror.css index.css | csso > dist/index.css",
-    "build-js": "browserify scripts/index.js > dist/index.js",
+    "build-js": "browserify scripts/index.js -t [ babelify --presets [ env ] ] > dist/index.js",
     "build-js-min": "browserify -p [ tinyify --no-flat ] scripts/index.js -t [ babelify --presets [ env ] ] > dist/index.js",
     "build-images": "cp -r images dist",
     "build-root": "cp robots.txt dist",

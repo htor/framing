@@ -1,4 +1,4 @@
-# scratch
+# scratch-editor
 
 A simple editor for live coding graphics with JS.
 Try out the editor here:
