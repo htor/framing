@@ -2,7 +2,7 @@ import * as fixes from './fixes'
 import { graphics } from './graphics'
 import { random, compose } from './tools'
 import * as editor from './editor'
-import * as scratch from 'scratch'
+import scratch from 'scratch'
 
 scratch.register(graphics)
 window.onclick = editor.focus
