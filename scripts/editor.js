@@ -22,7 +22,7 @@ const update = (cm) => {
 const init = () => {
     editor = CodeMirror(input, {
         mode: { name: 'javascript', globalVars: true },
-        theme: 'pastel-on-dark',
+        theme: 'default',
         lineWrapping: true,
         viewportMargin: Infinity,
         extraKeys: { 

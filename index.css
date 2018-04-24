@@ -12,25 +12,26 @@ code {
     position: absolute;
     top: 2em;
     left: 2em;
+    mix-blend-mode: difference;
 }
 
 output {
     position: absolute;
     bottom: 2em;
     left: 2em;
-    background: #2c2827;
-    color: #ccc;
+    color: white;
     line-height: 1.12;
+    mix-blend-mode: difference;
 }
 
-.CodeMirror.cm-s-pastel-on-dark {
+.CodeMirror {
     background: transparent;
     height: 100vh;
     line-height: 1.12;
 }
 
 .CodeMirror-cursor {
-    border-left: 2px solid #a7a7a7 !important;
+    border-left: 2px solid orange !important;
 }
 
 .CodeMirror pre {
@@ -38,7 +39,9 @@ output {
 }
 
 .CodeMirror-line span {
-    background: #2c2827;
+    background: transparent;
+    color: white !important;
+    mix-blend-mode: difference;
 }
 
 .hidden {
