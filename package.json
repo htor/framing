@@ -6,7 +6,7 @@
   "main": "index.js",
   "dependencies": {
     "codemirror": "^5.35.0",
-    "scratch": "git+https://github.com/htor/scratch.git"
+    "scratch": "https://github.com/htor/scratch.git"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
