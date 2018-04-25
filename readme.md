@@ -15,21 +15,21 @@ functions and properties defined in the [scratch library](https://github.com/hto
 for writing more compact code, but there is a also global canvas context object `ctx`
 that lets you write normal canvas code if you want. All links are sharable.
 
-## cmd+enter or ctrl+enter
+### cmd+enter or ctrl+enter
 Evaluate code. If the code errors, the error is displayed on the lower left and
 the previous code will continue to be evaluated.
 
-## back/forward
+### back/forward
 Back and forward buttons in the browser moves through editing history. 
 
-## alt+h
+### alt+h
 Hide/unhide the code and output.
 
-## alt+b
+### alt+b
 Blend/unblend the code and output with the canvas. Use this when your code is too hard
 too read.
 
-## alt+f
+### alt+f
 Toggle fullscreen mode.
 
 # installing
