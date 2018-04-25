@@ -22,7 +22,7 @@
     "watchify": "^3.9.0"
   },
   "scripts": {
-    "postinstall": "mkdir -p dist",
+    "postinstall": "mkdir -p dist; cp -r fonts dist",
     "build": "npm run build-js && npm run build-html && npm run build-css && npm run build-root",
     "build-html": "cp *.html dist",
     "build-html-min": "for f in *.html; do htmlclean $f -o dist/$f; done",
