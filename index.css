@@ -12,7 +12,6 @@ code {
     position: absolute;
     top: 2em;
     left: 2em;
-    mix-blend-mode: difference;
 }
 
 output {
@@ -21,7 +20,7 @@ output {
     left: 2em;
     color: white;
     line-height: 1.12;
-    mix-blend-mode: difference;
+    background: rgba(0, 0, 0, .5)
 }
 
 .CodeMirror {
@@ -39,8 +38,17 @@ output {
 }
 
 .CodeMirror-line span {
-    background: transparent;
     color: white !important;
+    background: rgba(0, 0, 0, .5)
+}
+
+code.blended,
+output.blended {
+    mix-blend-mode: difference;
+}
+
+code.blended .CodeMirror-line span {
+    background: none;
     mix-blend-mode: difference;
 }
 

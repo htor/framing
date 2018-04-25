@@ -33,7 +33,8 @@ const init = () => {
             'Alt-F': () => {
                 toggleFullScreen(isFull)
                 isFull = !isFull
-            }
+            },
+            'Alt-B': blend
         }
     })
     let searchParams = new URLSearchParams(window.location.search)
@@ -56,6 +57,11 @@ const hide = () => {
     input.classList.toggle('hidden') 
     output.classList.toggle('hidden') 
     editor.focus()
+}
+
+const blend = () => {
+    input.classList.toggle('blended') 
+    output.classList.toggle('blended') 
 }
 
 const evaluate = () => {

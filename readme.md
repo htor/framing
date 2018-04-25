@@ -1,6 +1,6 @@
 # scratch-editor
 
-A simple editor for live coding graphics with JS.
+A simple editor for live coding graphics with js.
 Try out the editor here:
 
 https://hermantorjussen.no/scratch
@@ -9,16 +9,28 @@ https://hermantorjussen.no/scratch
 
 # usage 
 
-Evaluate code in the editor window with Cmd + Enter or Ctrl + Enter. 
-Results are placed in the lower left corner. Hide/unhide the code with Alt-H. 
-Back and forward buttons in the browser moves through editing history. Links are sharable.
+The code is evaluated ~60 times a second in the global scope and you have access 
+to all of the browser APIs to build your thing. There is a group of non-standard 
+functions and properties defined in the [scratch library](https://github.com/htor/scratch)
+for writing more compact code, but there is a also global canvas context object `ctx`
+that lets you write normal canvas code if you want. All links are sharable.
 
-The code is evaluated 60 times 
-a second in the global scope and you have access to all of the browser APIs 
-to build your thing. There is a group of non-standard functions and properties
-defined in [scripts/index.js](scripts/index.js) for writing more compact
-code, but there is a also global canvas context object `ctx`
-that lets you write normal canvas code if you want.
+## cmd+enter or ctrl+enter
+Evaluate code. If the code errors, the error is displayed on the lower left and
+the previous code will continue to be evaluated.
+
+## back/forward
+Back and forward buttons in the browser moves through editing history. 
+
+## alt+h
+Hide/unhide the code and output.
+
+## alt+b
+Blend/unblend the code and output with the canvas. Use this when your code is too hard
+too read.
+
+## alt+f
+Toggle fullscreen mode.
 
 # installing
 
