@@ -15,3 +15,6 @@ window.requestAnimationFrame(function loop() {
     editor.evaluate()
     setTimeout(requestAnimationFrame, 1000 / frameRate, loop)
 })
+const message = 'https://github.com/htor/scratch-editor' + '\n' + 
+                'https://github.com/htor/scratch'
+console.log(message)
