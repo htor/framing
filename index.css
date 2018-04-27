@@ -1,3 +1,5 @@
+@import 'codemirror/lib/codemirror.css';
+
 @font-face {
     font-family: 'inconsolata';
     src: url('fonts/inconsolata-regular.woff2') format('woff2'),
