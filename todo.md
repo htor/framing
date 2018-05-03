@@ -9,3 +9,8 @@ http://127.0.0.1:8082/?id=cHVzaCgpJTBBbGV0JTIwdCUzRG1zKCkqLjAwMSUyQ2MlMEF0cmVzZX
 
 ## sort out fps
 ensure frames per second. check performance
+
+
+## ideas
+scopes/line evaluation, drawImage support and pixel manipulation,
+audio oscillators, modulation, perlin-noise function
