@@ -20,7 +20,7 @@ Evaluate code. If the code errors, the error is displayed on the lower left and
 the previous code will continue to be evaluated.
 
 ### back/forward
-Back and forward buttons in the browser moves through editing history. 
+Back and forward buttons in the browser moves through history. 
 
 ### alt+h
 Hide/unhide the code and output.
