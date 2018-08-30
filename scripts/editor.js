@@ -44,9 +44,9 @@ const init = () => {
         }
     })
 
-    let scratchId = getQueryParam('id')
-    if (scratchId) {
-        let decoded = fromBase64(scratchId)
+    let id = getQueryParam('id')
+    if (id) {
+        let decoded = fromBase64(id)
         code = decoded
         editor.setValue(code)
     } else {

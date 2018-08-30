@@ -82,6 +82,4 @@ window.requestAnimationFrame(function loop() {
     setTimeout(requestAnimationFrame, 1000 / frameRate, loop)
 })
 
-const message = 'https://github.com/htor/scratch-editor' + '\n' + 
-                'https://github.com/htor/scratch'
-console.log(message)
+console.log('https://github.com/htor/repeat-editor')
