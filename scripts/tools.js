@@ -7,13 +7,13 @@ const print = (...args) =>
 const random = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min)
 
-const toBase64 = (str) => 
+const toBase64 = str => 
     btoa(encodeURIComponent(str))
 
-const fromBase64 = (str) => 
+const fromBase64 = str => 
     decodeURIComponent(atob(str))
 
-const vendorPrefix = (str) =>
+const vendorPrefix = str =>
     ['', 'ms', 'moz', 'webkit'].map(prefix => prefix + str)
 
 const vendorPrefixed = (prop, target) => {
@@ -22,10 +22,16 @@ const vendorPrefixed = (prop, target) => {
     ).map(prefixedProp => target[prefixedProp])
     .filter(prefixed => prefixed)[0]
 }
+
+const getQueryParam = name =>
+    new URLSearchParams(location.search).get(name)
+
 const setQueryParam = (name, value) => {
-    let newurl = window.location.protocol + '//' + 
-        window.location.host + window.location.pathname + `?${name}=${value}`
-    window.history.pushState({ path: newurl }, '', newurl)
+    let queryString = new URLSearchParams(location.search)
+    queryString.set(name, value)
+    let newUrl = window.location.protocol + '//' + 
+        window.location.host + window.location.pathname + `?${queryString}`
+    window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
 const setFavicon = (canvas) => {
@@ -55,6 +61,7 @@ export {
     random, 
     toBase64,
     fromBase64,
+    getQueryParam,
     setQueryParam,
     setFavicon,
     vendorPrefix,

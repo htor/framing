@@ -1,6 +1,12 @@
 import { graphics } from './graphics'
-import { toBase64, fromBase64, setQueryParam, setFavicon, 
-    toggleFullScreen } from './tools'
+import { 
+    toBase64, 
+    fromBase64, 
+    getQueryParam,
+    setQueryParam, 
+    setFavicon, 
+    toggleFullScreen 
+} from './tools'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/javascript/javascript'
 
@@ -37,15 +43,19 @@ const init = () => {
             'Alt-B': blend
         }
     })
-    let searchParams = new URLSearchParams(window.location.search)
-    let base64Code = searchParams.get('id')
-    if (base64Code) {
-        let decoded = fromBase64(base64Code)
+
+    let scratchId = getQueryParam('id')
+    if (scratchId) {
+        let decoded = fromBase64(scratchId)
         code = decoded
         editor.setValue(code)
     } else {
         editor.setValue('')
     }
+
+    if (getQueryParam('hide') === 'true')
+        hide()
+
     evaluate()
     setFavicon(graphics.canvas)
 }
