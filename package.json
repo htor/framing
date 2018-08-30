@@ -5,8 +5,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "codemirror": "^5.35.0",
-    "scratch": "https://github.com/htor/scratch.git"
+    "codemirror": "^5.35.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
