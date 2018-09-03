@@ -1,4 +1,5 @@
 .DS_Store
 node_modules
-dist
-scratchlist.txt
+package-lock.json
+public/scripts
+public/styles
