@@ -1,9 +1,3 @@
-const compose = (...fs) => 
-    x => fs.reduce((acc, f) => f(acc), x);
-
-const print = (...args) =>
-    console.log(...args)
-
 const random = (min, max) =>
     Math.floor(Math.random() * (max - min + 1) + min)
 
@@ -34,8 +28,9 @@ const setQueryParam = (name, value) => {
     window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
-const setFavicon = (canvas) => {
+const setFavicon = () => {
     setTimeout(() => {
+        let canvas = document.querySelector('canvas')
         let favicon = document.querySelector('[rel=icon]')
         let iconCanvas = document.createElement('canvas')
         let iconGraphics = iconCanvas.getContext('2d')
@@ -56,8 +51,6 @@ const toggleFullScreen = (exit) => {
 }
 
 export { 
-    compose, 
-    print, 
     random, 
     toBase64,
     fromBase64,

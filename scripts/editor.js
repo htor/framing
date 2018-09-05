@@ -1,4 +1,3 @@
-import { graphics } from './graphics'
 import { 
     toBase64, 
     fromBase64, 
@@ -12,18 +11,9 @@ import 'codemirror/mode/javascript/javascript'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
+const canvas = document.querySelector('canvas')
+const graphics = canvas.getContext('2d')
 let editor, code, prevCode, isFull = false
-
-const tab = (cm) => {
-    let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
-    cm.replaceSelection(spaces)
-}
-
-const update = (cm) => {
-    code = cm.getValue()
-    setQueryParam('id', toBase64(code))
-    setFavicon(graphics.canvas)
-}
 
 const init = () => {
     editor = CodeMirror(input, {
@@ -32,9 +22,12 @@ const init = () => {
         lineWrapping: true,
         viewportMargin: Infinity,
         extraKeys: { 
-            'Cmd-Enter': update, 
-            'Ctrl-Enter': update, 
-            'Tab': tab,
+            'Cmd-Enter': read, 
+            'Ctrl-Enter': read, 
+            'Tab': cm => {
+                let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
+                cm.replaceSelection(spaces)
+            },
             'Alt-H': hide,
             'Alt-F': () => {
                 toggleFullScreen(isFull)
@@ -56,22 +49,21 @@ const init = () => {
     if (getQueryParam('hide') === 'true')
         hide()
 
-    evaluate()
-    setFavicon(graphics.canvas)
+    setFavicon()
 }
 
-const focus = () => 
-    editor.focus()
-
-const hide = () => {
-    input.classList.toggle('hidden') 
-    output.classList.toggle('hidden') 
-    editor.focus()
-}
-
-const blend = () => {
-    input.classList.toggle('blended') 
-    output.classList.toggle('blended') 
+const read = cm => {
+    let cursor = cm.getCursor()
+    let from, to
+    if (cm.somethingSelected()) {
+        from = editor.getCursor('start')
+        to = editor.getCursor('end')
+        code = cm.getRange(from, to)
+    } else {
+        code = cm.getValue()
+    }
+    setQueryParam('id', toBase64(code))
+    setFavicon()
 }
 
 const evaluate = () => {
@@ -88,4 +80,30 @@ const evaluate = () => {
     }
 }
 
-export { init, focus, evaluate }
+const focus = () => 
+    editor.focus()
+
+const hide = () => {
+    input.classList.toggle('hidden') 
+    output.classList.toggle('hidden') 
+    editor.focus()
+}
+
+const blend = () => {
+    input.classList.toggle('blended') 
+    output.classList.toggle('blended') 
+}
+
+const resize = () => {
+    canvas.width = window.w = window.innerWidth
+    canvas.height = window.h = window.innerHeight
+    canvas.style.background = 'white'
+}
+
+export { 
+    init, 
+    focus, 
+    evaluate, 
+    resize,
+    graphics 
+}
