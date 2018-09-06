@@ -1,7 +1,7 @@
 // draw two grascale gradients
+clear()
 let psize=20
 bground('black')
-
 for (let x=0;x<w;x+=psize) {
  for (let y=0;y<h/2;y+=psize) {
   let c=`rgba(255, 255, 255, `+ 

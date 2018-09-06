@@ -1,4 +1,5 @@
 // floating circles
+clear()
 push()
 let t=ms()*.0009,c,c2,g
 tslate(w/2,h/2)
