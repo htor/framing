@@ -16,14 +16,15 @@ const graphics = canvas.getContext('2d')
 let editor, code, prevCode, isFull = false
 
 const init = () => {
+    canvas.style.background = 'white'
     editor = CodeMirror(input, {
         mode: { name: 'javascript', globalVars: true },
         theme: 'default',
         lineWrapping: true,
         viewportMargin: Infinity,
         extraKeys: { 
-            'Cmd-Enter': read, 
-            'Ctrl-Enter': read, 
+            'Cmd-Enter': update, 
+            'Ctrl-Enter': update, 
             'Tab': cm => {
                 let spaces = Array(cm.getOption('indentUnit') + 1).join(' ')
                 cm.replaceSelection(spaces)
@@ -52,16 +53,8 @@ const init = () => {
     setFavicon()
 }
 
-const read = cm => {
-    let cursor = cm.getCursor()
-    let from, to
-    if (cm.somethingSelected()) {
-        from = editor.getCursor('start')
-        to = editor.getCursor('end')
-        code = cm.getRange(from, to)
-    } else {
-        code = cm.getValue()
-    }
+const update = cm => {
+    code = cm.getValue()
     setQueryParam('id', toBase64(code))
     setFavicon()
 }
@@ -97,7 +90,6 @@ const blend = () => {
 const resize = () => {
     canvas.width = window.w = window.innerWidth
     canvas.height = window.h = window.innerHeight
-    canvas.style.background = 'white'
 }
 
 export { 

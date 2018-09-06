@@ -1,5 +1,5 @@
 import * as fixes from './fixes'
-import { random, compose } from './tools'
+import { random, remember } from './tools'
 import * as editor from './editor'
 
 const graphics = editor.graphics
@@ -22,7 +22,6 @@ window.frect = (...args) => graphics.fillRect(...args)
 window.font = arg => graphics.font = arg
 window.sstyle = arg => graphics.strokeStyle = arg
 window.fstyle = arg => graphics.fillStyle = arg
-window.bground = arg => graphics.canvas.style.background = arg
 window.font = arg => graphics.font = arg
 window.lwidth = arg => graphics.lineWidth = arg
 window.lcap = arg => graphics.lineCap = arg
@@ -34,7 +33,8 @@ window.rotate = degs => graphics.rotate(degs * Math.PI / 180)
 window.tslate = (...args) => graphics.translate(...args)
 window.scale = (...args) => graphics.scale(...args)
 window.treset = () => graphics.setTransform(1, 0, 0, 1, 0, 0)
-window.clear = arg => arg ? graphics.clearRect(0, 0, w, h) : arg;
+window.clear = arg => arg === false ? arg : graphics.clearRect(0, 0, w, h)
+window.bground = arg => { push(); fstyle(arg); frect(0, 0, w, h); pop() }
 window.second = () => new Date().getSeconds()
 window.millis = window.ms = () => (new Date()) - startDate
 window.fps = arg => arg === undefined ? window.frameRate : window.frameRate = arg
@@ -86,6 +86,35 @@ window.gimg = ((src, cb) => {
     }
 })()
 window.drimg = (...args) => graphics.drawImage(...args)
+window.codefg = remember(color => {
+    let style = document.createElement('style')
+    let rule = `
+        output,
+        .CodeMirror-line span,
+        .CodeMirror-cursor { 
+            color: ${color} !important; 
+            border-color: ${color} !important;
+        }
+    `
+    document.head.appendChild(style)
+    style.sheet.insertRule(rule)
+})
+
+window.codebg = remember(color => {
+    let style = document.createElement('style')
+    let rule = `
+        .CodeMirror-selected,
+        .CodeMirror-line::selection,
+        .CodeMirror-line > span::selection,
+        .CodeMirror-line > span > span::selection,
+        .CodeMirror-line span,
+        output {
+            background: ${color} !important; 
+        }
+    `
+    document.head.appendChild(style)
+    style.sheet.insertRule(rule)
+})
 
 window.onresize = editor.resize
 window.onpopstate = editor.init

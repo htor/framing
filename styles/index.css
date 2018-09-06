@@ -15,6 +15,7 @@ body {
     margin: 0;
     overflow: hidden;
     font-size: 16px;
+    font-family: inconsolata, monospace;
 }
 
 code {
@@ -28,20 +29,25 @@ output {
     bottom: 2em;
     left: 2em;
     color: white;
-    line-height: 1.12;
-    background: rgba(0, 0, 0, .5);
-    font-family: inconsolata, monospace;
+    background: black;
+    line-height: 1.1;
 }
 
 .CodeMirror {
     height: 100vh;
-    font-family: inconsolata, monospace;
-    line-height: 1.12;
+    line-height: 1.1;
     background: transparent;
 }
 
 .CodeMirror-cursor {
-    border-left: 2px solid orange !important;
+    border-left: 2px solid white !important;
+}
+
+.CodeMirror-selected,
+.CodeMirror-line::selection,
+.CodeMirror-line > span::selection,
+.CodeMirror-line > span > span::selection { 
+    background: currentColor !important;
 }
 
 .CodeMirror pre {
@@ -50,16 +56,16 @@ output {
 
 .CodeMirror-line span {
     color: white !important;
-    background: rgba(0, 0, 0, .5)
+    background: black;
 }
 
-code.blended,
-output.blended {
+code.blended {
     mix-blend-mode: difference;
 }
 
-code.blended .CodeMirror-line span {
-    background: none;
+code.blended .CodeMirror-line span, 
+output.blended {
+    background: none !important;
     mix-blend-mode: difference;
 }
 

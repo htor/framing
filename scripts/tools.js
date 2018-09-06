@@ -50,6 +50,15 @@ const toggleFullScreen = (exit) => {
     }
 }
 
+const remember = fn => {
+    let last = ''
+    return arg => {
+        if (arg === last) return
+        last = arg
+        fn(arg)
+    }
+}
+
 export { 
     random, 
     toBase64,
@@ -59,5 +68,6 @@ export {
     setFavicon,
     vendorPrefix,
     vendorPrefixed,
-    toggleFullScreen 
+    toggleFullScreen,
+    remember 
 }
