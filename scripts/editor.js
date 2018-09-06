@@ -47,6 +47,9 @@ const init = () => {
         editor.setValue('')
     }
 
+    if (getQueryParam('blend') === 'false')
+        blend()
+
     if (getQueryParam('hide') === 'true')
         hide()
 
@@ -77,14 +80,28 @@ const focus = () =>
     editor.focus()
 
 const hide = () => {
-    input.classList.toggle('hidden') 
-    output.classList.toggle('hidden') 
+    if (input.classList.contains('hidden')) {
+        input.classList.remove('hidden') 
+        output.classList.remove('hidden') 
+        setQueryParam('hide', false)
+    } else {
+        input.classList.add('hidden') 
+        output.classList.add('hidden') 
+        setQueryParam('hide', true)
+    }
     editor.focus()
 }
 
 const blend = () => {
-    input.classList.toggle('blended') 
-    output.classList.toggle('blended') 
+    if (input.classList.contains('blended')) {
+        input.classList.remove('blended') 
+        output.classList.remove('blended') 
+        setQueryParam('blend', false)
+    } else {
+        input.classList.add('blended') 
+        output.classList.add('blended') 
+        setQueryParam('blend', true)
+    }
 }
 
 const resize = () => {
