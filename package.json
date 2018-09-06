@@ -30,7 +30,7 @@
   "scripts": {
     "postinstall": "mkdirp public public/styles public/scripts",
     "build": "npm-run-all -p build-html build-css build-js",
-    "build-min": "npm-run-all -p build-css-min build-js-min",
+    "build-min": "npm-run-all -p build-html build-css-min build-js-min",
     "build-html": "minicat index.html > public/index.html",
     "build-css": "postcss styles -u postcss-import -u postcss-cssnext -d public/styles",
     "build-css-min": "cd styles && glob-exec --parallel --foreach \"*.css\" -- \"minicat {{file}} | postcss -u postcss-import -u postcss-cssnext | csso > ../public/styles/{{file}}\"",
