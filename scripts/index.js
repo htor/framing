@@ -78,6 +78,7 @@ window.gimg = ((src, cb) => {
         let img = cache[src]
         if (img) return cb(img)
         img = new Image()
+        img.crossOrigin = 'Anonymous'
         img.src = src
         img.onload = () => {
             cache[src] = img
