@@ -1,6 +1,12 @@
 # todo
 
+these should probably be sepearate issues posted on github, but whatever
+
+## gimg errors
+handle not ok requests (status code not 200) made by `gimg` to avoid repeating request
+
 ## fix duplication of code window
+code window is sometimes skewed down and another one appears. weird stuff.
 
     .CodeMirror cm-s-default CodeMirror-wrap ~ CodeMirror cm-s-default CodeMirror-wrap {
         display: none
