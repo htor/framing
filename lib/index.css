@@ -1,15 +1,7 @@
 @import 'codemirror/lib/codemirror.css';
 
-@font-face {
-    font-family: 'inconsolata';
-    src: url('/fonts/inconsolata-regular.woff2') format('woff2'),
-         url('/fonts/inconsolata-regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
 html,
-body { 
+body {
     min-height: 100%;
     height: 100%;
     margin: 0;
@@ -46,7 +38,7 @@ output {
 .CodeMirror-selected,
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
-.CodeMirror-line > span > span::selection { 
+.CodeMirror-line > span > span::selection {
     background: currentColor !important;
 }
 
@@ -63,12 +55,12 @@ code.blended {
     mix-blend-mode: difference;
 }
 
-code.blended .CodeMirror-line span, 
+code.blended .CodeMirror-line span,
 output.blended {
     background: none !important;
     mix-blend-mode: difference;
 }
 
 .hidden {
-    opacity: 0;    
+    opacity: 0;
 }
