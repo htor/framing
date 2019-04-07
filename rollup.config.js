@@ -24,7 +24,7 @@ export default {
     commonjs(),
     buble(),
     uglify(!process.env.ROLLUP_WATCH || { output: { comments: /^!/ } }),
-    serve(!process.env.ROLLUP_WATCH || { contentBase: 'lib', port: 8080 })
+    serve(!process.env.ROLLUP_WATCH || { contentBase: 'lib', port: 8080, open: true })
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return
