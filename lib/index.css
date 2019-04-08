@@ -2,67 +2,53 @@
 
 html,
 body {
-    position: relative;
-    min-height: 100%;
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-    font-size: 16px;
-    font-family: inconsolata, monospace;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font: 16px/1.1 monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-    position: absolute;
-    top: 2em;
-    left: 2em;
+  position: absolute;
+  top: 2em;
+  left: 2em;
 }
 
 output {
-    position: absolute;
-    bottom: 2em;
-    left: 2em;
-    color: white;
-    background: black;
-    line-height: 1.1;
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  color: white;
+  background: black;
+}
+
+code.hidden,
+output.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .CodeMirror {
-    line-height: 1.1;
-    background: transparent;
-}
-
-.CodeMirror-cursor {
-    border-left: 2px solid white !important;
+  min-height: 100vh;
+  line-height: 1.1;
+  background: transparent;
 }
 
 .CodeMirror-selected,
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line > span > span::selection {
-    background: currentColor !important;
+  background: rgba(255, 255, 255, .6) !important;
 }
 
-.CodeMirror pre {
-    z-index: 0;
-}
+.CodeMirror pre { z-index: 0 } /* fix selection */
+.CodeMirror-cursor { border-left: 2px solid white !important }
 
 .CodeMirror-line span {
-    color: white !important;
-    background: black;
-}
-
-code.blended {
-    mix-blend-mode: difference;
-}
-
-code.blended .CodeMirror-line span,
-output.blended {
-    background: none !important;
-    mix-blend-mode: difference;
-}
-
-.hidden {
-    opacity: 0;
+  color: white !important;
+  background: black;
 }

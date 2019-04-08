@@ -6,35 +6,31 @@ A simple javascript editor for live coding graphics, sound and more.
 
 # demo
 
-Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwYnJlYXRoaW5nJTIwZ3JhZGllbnQlMEElMEFsZXQlMjB0JTNEYWJzKHNpbihtcygpKi4wMDA5KSoyMDUpJTBBbGV0JTIwZyUzRHJncmFkKHclMkYzJTJDaCUyRjIlMkN3JTJGMi4xJTJDdyUyRjIlMkNoJTJGMiUyQzApJTBBbGV0JTIwYyUzRHJnYmEoMjM0JTJDdCUyNjI1NSUyQ3QtMjU1JTJDMSklMEFnLnN0b3AoMCUyQyUyMCclMjNmMDZkMDYnKSUwQSUyMC5zdG9wKC4zJTJDYyklMEElMjAuc3RvcCgxJTJDJ2JsdWUnKSUwQWZzdHlsZShnKSUwQWZyZWN0KDAlMkMwJTJDdyUyQ2gpJTBBZw==). 
+Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwYnJlYXRoaW5nJTIwZ3JhZGllbnQlMEElMEFsZXQlMjB0JTNEYWJzKHNpbihtcygpKi4wMDA5KSoyMDUpJTBBbGV0JTIwZyUzRHJncmFkKHclMkYzJTJDaCUyRjIlMkN3JTJGMi4xJTJDdyUyRjIlMkNoJTJGMiUyQzApJTBBbGV0JTIwYyUzRHJnYmEoMjM0JTJDdCUyNjI1NSUyQ3QtMjU1JTJDMSklMEFnLnN0b3AoMCUyQyUyMCclMjNmMDZkMDYnKSUwQSUyMC5zdG9wKC4zJTJDYyklMEElMjAuc3RvcCgxJTJDJ2JsdWUnKSUwQWZzdHlsZShnKSUwQWZyZWN0KDAlMkMwJTJDdyUyQ2gpJTBBZw==).
 
 Look inside the [examples](examples) directory for more stuff.
 
-# usage 
+# usage
 
-The code is evaluated ~60 times a second in the global scope and you have access 
-to all of the browser APIs to build your thing. There is a group of non-standard 
+The code is evaluated ~60 times a second in the global scope and you have access
+to all of the browser APIs to build your thing. There is a group of non-standard
 functions and properties defined in [scripts/index.js](./scripts/index.js)
 for writing more compact code, but there is a also global canvas context object `ctx`
-that lets you write normal canvas code if you want. All links created with repeat 
+that lets you write normal canvas code if you want. All links created with repeat
 are sharable by default.
 
-### cmd+enter or ctrl+enter
+### cmd/ctrl+enter
 Evaluate code. If the code errors, the error is displayed on the lower left and
 the previous code will continue to be evaluated.
 
 ### back/forward
-Back and forward buttons in the browser moves through history. 
-
-### alt+h
-Hide/unhide the code and output.
-
-### alt+b
-Blend/unblend the code and output with the canvas. Use this when your code is too hard
-too read.
+Back and forward buttons in the browser moves through history.
 
 ### alt+f
 Toggle fullscreen mode.
+
+### alt+h
+Hide/unhide the code and output.
 
 # installing
 
