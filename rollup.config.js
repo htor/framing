@@ -7,6 +7,8 @@ import resolve from 'rollup-plugin-node-resolve'
 import serve from 'rollup-plugin-serve'
 import { uglify } from 'rollup-plugin-uglify'
 
+const isWatching = process.env.ROLLUP_WATCH
+
 export default {
   input: 'lib/index.js',
   output: {
@@ -22,9 +24,9 @@ export default {
     }),
     resolve({ browser: true }),
     commonjs(),
-    buble(),
-    uglify(!process.env.ROLLUP_WATCH || { output: { comments: /^!/ } }),
-    serve(!process.env.ROLLUP_WATCH || { contentBase: 'lib', port: 8080 })
+    buble({ transforms: { asyncAwait: false }}),
+    isWatching || uglify({ output: { comments: /^!/ } }),
+    isWatching && serve({ contentBase: 'lib', port: 8080 })
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return
