@@ -1,6 +1,6 @@
 // animation drawing intersecting
 // lines using bit operations
-let x,y,x2,y2,t=millis(),s=11
+let x,y,x2,y2,t=ms(),s=11
 lwidth(0.5)
 clear()
 begin()

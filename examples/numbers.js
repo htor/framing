@@ -1,6 +1,6 @@
 // raining numbers
 clear()
-let x,y,s=12,t=millis()
+let x,y,s=12,t=ms()
 font(`${s}px monospace`)
 fstyle('black')
 fps(11)

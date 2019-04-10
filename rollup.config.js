@@ -14,6 +14,7 @@ export default {
   output: {
     file: 'lib/repeat-editor.min.js',
     format: 'umd',
+    strict: false,
     name: 'repeat-editor',
     sourcemap: true
   },
