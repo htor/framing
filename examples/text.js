@@ -1,5 +1,4 @@
 // draw some text
-clear()
 font('200px sans-serif')
 fstyle('red')
 ftext('11', 50, 400)

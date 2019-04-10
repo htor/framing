@@ -1,6 +1,6 @@
 # repeat-editor
 
-A simple javascript editor for live coding graphics, sound and more.
+A simple javascript editor for live coding graphics.
 
 ![repeat: editor for live coding](examples/screen.png)
 

@@ -1,4 +1,5 @@
 // fetch image and re-draw it
+clear(0)
 let t=Math.ceil(abs(sin(ms()*.0001))*10)
 fps(t)
 let s=[w,w,w/2,w/4][rand(0,4)]

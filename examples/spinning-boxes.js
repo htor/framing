@@ -1,6 +1,5 @@
 // spinning boxes made
 // using transforms
-clear()
 push()
 fstyle('gold')
 tslate(w/2,h/2)

@@ -17,8 +17,7 @@
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-node-resolve": "^4.2.1",
     "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-uglify": "^6.0.2"
+    "rollup-plugin-serve": "^1.0.1"
   },
   "scripts": {
     "start": "rollup --config --watch",

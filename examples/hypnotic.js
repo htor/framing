@@ -1,7 +1,5 @@
 // generate hypnotic pattern
 var psize = 22, achan = 255, tfactor = 0.000028
-// loop
-clear()
 for (var x=0;x<w;x+= psize) {
   for (var y = 0; y < h; y += psize) {
     achan = 255 & (x * (y - x)) * ms() * tfactor

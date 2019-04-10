@@ -1,4 +1,5 @@
 // color smudging, based on floating-circles.js
+clear(0)
 push()
 let t=ms()*.000499,c,c2,g
 treset(1)

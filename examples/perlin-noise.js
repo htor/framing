@@ -1,7 +1,5 @@
 // generate 2-dimensional texture with noise function
 // this is using simplex underneath (perlin-like)
-
-clear();
 let s=18
 let x=0,y=0,inc=.048
 for (let i=0;i<w;i+=s,x=0,y+=inc) {
