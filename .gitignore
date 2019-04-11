@@ -1,3 +1,4 @@
 .DS_Store
 node_modules
-lib/repeat-editor.*
+lib/*.map
+lib/*.min.js
