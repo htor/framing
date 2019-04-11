@@ -1,36 +1,31 @@
 # repeat-editor
 
-A simple javascript editor for live coding graphics.
+A simple editor for live coding [canvas](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) graphics.
 
 ![repeat: editor for live coding](examples/screen.png)
 
 # demo
 
-Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwYnJlYXRoaW5nJTIwZ3JhZGllbnQlMEElMEFsZXQlMjB0JTNEYWJzKHNpbihtcygpKi4wMDA5KSoyMDUpJTBBbGV0JTIwZyUzRHJncmFkKHclMkYzJTJDaCUyRjIlMkN3JTJGMi4xJTJDdyUyRjIlMkNoJTJGMiUyQzApJTBBbGV0JTIwYyUzRHJnYmEoMjM0JTJDdCUyNjI1NSUyQ3QtMjU1JTJDMSklMEFnLnN0b3AoMCUyQyUyMCclMjNmMDZkMDYnKSUwQSUyMC5zdG9wKC4zJTJDYyklMEElMjAuc3RvcCgxJTJDJ2JsdWUnKSUwQWZzdHlsZShnKSUwQWZyZWN0KDAlMkMwJTJDdyUyQ2gpJTBBZw==).
-
-Look inside the [examples](examples) directory for more stuff.
+Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwYnJlYXRoaW5nJTIwZ3JhZGllbnQlMEElMEFsZXQlMjB0JTNEYWJzKHNpbihtcygpKi4wMDA5KSoyMDUpJTBBbGV0JTIwZyUzRHJncmFkKHclMkYzJTJDaCUyRjIlMkN3JTJGMi4xJTJDdyUyRjIlMkNoJTJGMiUyQzApJTBBbGV0JTIwYyUzRHJnYmEoMjM0JTJDdCUyNjI1NSUyQ3QtMjU1JTJDMSklMEFnLnN0b3AoMCUyQyUyMCclMjNmMDZkMDYnKSUwQSUyMC5zdG9wKC4zJTJDYyklMEElMjAuc3RvcCgxJTJDJ2JsdWUnKSUwQWZzdHlsZShnKSUwQWZyZWN0KDAlMkMwJTJDdyUyQ2gpJTBBZw==). Look inside the [examples](examples) directory for examples and inspiration.
 
 # usage
 
-The code is evaluated ~60 times a second in the global scope and you have access
-to all of the browser APIs to build your thing. There is a group of non-standard
-functions and properties defined in [scripts/index.js](./scripts/index.js)
-for writing more compact code, but there is a also global canvas context object `ctx`
-that lets you write normal canvas code if you want. All links created with repeat
-are sharable by default.
+To draw something on the canvas, use the shorthand functions defined in
+[lib/repeat-lang.js](./lib/repeat-lang.js) (`srect(...)`) or standard functions with `ctx` global
+ (`ctx.strokeRect(...)`). The inputted code is evaluated ~60 times a second by default. All links created with repeat are sharable.
 
 ### cmd/ctrl+enter
-Evaluate code. If the code errors, the error is displayed on the lower left and
+Save and evaluate code. If the code errors, the error is displayed on the lower left and
 the previous code will continue to be evaluated.
 
 ### back/forward
-Back and forward buttons in the browser moves through history.
+Back and forward buttons in the browser moves through save history.
 
 ### alt+f
 Toggle fullscreen mode.
 
 ### alt+h
-Hide/unhide the code and output.
+Toggle hiding code and output.
 
 # installing
 
