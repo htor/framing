@@ -12,11 +12,11 @@ Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorju
 
 To draw something on the canvas, use the shorthand functions defined in
 [lib/repeat-lang.js](./lib/repeat-lang.js) (`srect(...)`) or standard functions with `ctx` global
- (`ctx.strokeRect(...)`). The inputted code is evaluated ~60 times a second by default. All links created with repeat are sharable.
+ (`ctx.strokeRect(...)`). The inputted code is evaluated ~60 times a second by default. 
 
 ### cmd/ctrl+enter
 Save and evaluate code. If the code errors, the error is displayed on the lower left and
-the previous code will continue to be evaluated.
+the previous code will continue to be evaluated. When saving, the URL is updated with a shareable link to your piece.
 
 ### back/forward
 Back and forward buttons in the browser moves through save history.
