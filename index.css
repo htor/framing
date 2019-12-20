@@ -32,9 +32,13 @@ output.hidden {
   pointer-events: none;
 }
 
+canvas {
+  background: #f1f1f1;
+}
+
 .CodeMirror {
   min-height: 100vh;
-  line-height: 1.1;
+  line-height: 1.08;
   background: transparent;
 }
 

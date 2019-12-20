@@ -1,5 +1,5 @@
 // dashed, rotated ellipse
-ldash([1,2,9])
+
+ldash([1, 2, 9])
 lwidth(2)
-// loop
-sellips(w/2,h/2,50,240,45)
+sellips(w / 2, h / 2, 50, 240, 45)

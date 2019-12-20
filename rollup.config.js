@@ -7,10 +7,10 @@ import resolve from 'rollup-plugin-node-resolve'
 import serve from 'rollup-plugin-serve'
 
 export default {
-  input: 'lib/repeat-editor.js',
+  input: 'scripts/editor.js',
   output: {
-    file: 'lib/repeat-editor.min.js',
-    format: 'esm',
+    file: 'scripts/editor.min.js',
+    format: 'cjs',
     sourcemap: true
   },
   plugins: [
@@ -21,7 +21,7 @@ export default {
     resolve({ browser: true }),
     commonjs(),
     buble(),
-    process.env.ROLLUP_WATCH && serve({ contentBase: 'lib', port: 8080 })
+    process.env.ROLLUP_WATCH && serve({ contentBase: '.', port: 8080 })
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return

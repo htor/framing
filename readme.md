@@ -11,8 +11,8 @@ Try out the editor here: [https://hermantorjussen.no/repeat](https://hermantorju
 # usage
 
 To draw something on the canvas, use the shorthand functions defined in
-[lib/repeat-lang.js](./lib/repeat-lang.js) (`srect(...)`) or standard functions with `ctx` global
- (`ctx.strokeRect(...)`). The inputted code is evaluated ~60 times a second by default. 
+[lang.js](./scripts/lang.js) (`srect(...)`) or standard functions with `ctx` global
+ (`ctx.strokeRect(...)`). The inputted code is evaluated ~60 times a second by default.
 
 ### cmd/ctrl+enter
 Save and evaluate code. If the code errors, the error is displayed on the lower left and
