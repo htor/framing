@@ -10,19 +10,21 @@ import '../index.css'
 const input = document.querySelector('code')
 const output = document.querySelector('output')
 const canvas = document.querySelector('canvas')
-let editor, isFullscreen, isHidden
+let editor = null
+let isFullscreen = false
+let isHidden = false
 
 function start () {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
-  editor = CodeMirror(input, {
+  editor = editor || CodeMirror(input, {
     mode: { name: 'javascript', globalVars: true },
     lineWrapping: true,
     matchBrackets: true,
     autoCloseBrackets: true,
     extraKeys: {
-      'Cmd-Enter': () => evalCode(editor),
-      'Ctrl-Enter': () => evalCode(editor),
+      'Cmd-Enter': () => saveCode(editor),
+      'Ctrl-Enter': () => saveCode(editor),
       'Tab': () => editor.replaceSelection('  '),
       'Esc': () => editor.setCursor(editor.getCursor()),
       'Cmd-L': () => selectLine(editor),
@@ -38,7 +40,7 @@ function start () {
   editor.setValue(id ? decodeURIComponent(atob(id)) : ' ')
   editor.focus()
   toggleCode()
-  evalCode(editor)
+  saveCode(editor)
 }
 
 function duplicateLine (editor) {
@@ -68,9 +70,10 @@ function toggleCode () {
   isHidden = !isHidden
 }
 
-function evalCode (editor) {
+function saveCode (editor) {
   const code = editor.getValue()
   lang.evalCode(code)
+  lastCode = code
   setQueryParam('id', btoa(encodeURIComponent(code)))
   setFavicon()
 }

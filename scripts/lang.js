@@ -11,7 +11,7 @@ let randomSeed = 0
 let frameRate = 120
 let clearFrame = true
 let shouldLoop = true
-let frameTimer
+let frameTimer = null
 
 window.ctx = canvas.getContext('2d')
 window.sin = Math.sin
