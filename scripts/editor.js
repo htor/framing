@@ -10,6 +10,8 @@ import '../index.css'
 const input = document.querySelector('code')
 const output = document.querySelector('output')
 const canvas = document.querySelector('canvas')
+const help = document.querySelector('aside')
+
 let editor = null
 let isFullscreen = false
 let isHidden = false
@@ -31,11 +33,11 @@ function start () {
       'Ctrl-L': () => selectLine(editor),
       'Shift-Cmd-D': () => duplicateLine(editor),
       'Shift-Cmd-K': () => editor.toggleComment(),
-      'Alt-H': toggleCode,
-      'Alt-F': togglefullscreen
+      'Alt-I': () => {},
+      'Alt-H': () => {}
     }
   })
-  isHidden = getQueryParam('hide') === 'true'
+  isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
   editor.setValue(id ? decodeURIComponent(atob(id)) : '')
   editor.focus()
@@ -58,8 +60,13 @@ function selectLine (editor) {
   editor.setExtending(false)
 }
 
-function togglefullscreen () {
-  if (isFullscreen)  {
+function toggleHelp () {
+  help.toggleAttribute('hidden')
+  toggleCode()
+}
+
+function toggleFullscreen () {
+  if (document.fullscreenElement)  {
     document.exitFullscreen()
   } else {
     document.documentElement.requestFullscreen()
@@ -67,8 +74,8 @@ function togglefullscreen () {
 }
 
 function toggleCode () {
-  input.classList.toggle('hidden', isHidden)
-  output.classList.toggle('hidden', isHidden)
+  input.toggleAttribute('hidden', isHidden)
+  output.toggleAttribute('hidden', isHidden)
   setQueryParam('hidden', isHidden)
   isHidden = !isHidden
 }
@@ -80,7 +87,25 @@ function saveCode (editor) {
   setFavicon()
 }
 
-window.addEventListener('popstate', start)
-window.addEventListener('fullscreenchange', () => isFullscreen = !isFullscreen)
+async function loadHelp () {
+  const response = await fetch('functions.md')
+  let text = await response.text()
+  let newLines = []
+  for (line of text.split('\n')) {
+    if (line.startsWith('# ')) {}
+    else if (line.startsWith('## ')) newLines.push(`<h1>${line.slice(2)}</h1>`)
+    else if (line.trim()) newLines.push(`<p>${line}</p>`)
+  }
+  help.innerHTML = newLines.join('\n')
+}
+
 window.addEventListener('click', () => editor.focus())
+window.addEventListener('popstate', start)
+window.addEventListener('keydown', (event) => {
+  if (event.altKey && event.keyCode === 73) toggleHelp() // alt-i
+  if (event.altKey && event.keyCode === 72) toggleCode() // alt-h
+  if (event.altKey && event.keyCode === 70) toggleFullscreen() // alt-f
+})
+
+loadHelp()
 start()

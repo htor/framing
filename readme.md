@@ -5,10 +5,10 @@ A simple editor for live coding [canvas](https://developer.mozilla.org/en-US/doc
 ![repeat: editor for live coding](examples/screen.png)
 
 
-# usage
+# example
 
-To draw something on the canvas, use the shorthand functions defined in
-[lang.js](./scripts/lang.js) or standard canvas functions with the `ctx` global. The code is run once:
+To draw something on the canvas, use the [shorthand functions](./functions.md) or
+standard canvas functions with the `ctx` global. The code is run once:
 
  ```js
 fstyle('orange')
@@ -18,7 +18,8 @@ ctx.fillStyle('orange')
 ctx.fillRect(500, 500, 100, 100)
  ```
 
-To run code in a loop, define a function called `draw()`. The body of this function is called for each frame:
+To run code in a loop, define a function called `draw()`.
+The body of this function is called for each frame:
 
 ```js
 fps(6)
@@ -34,12 +35,17 @@ function draw () {
 }
 ```
 
-Control the number of frames per second with `fps(n)`. Look inside the [examples](examples) directory for examples and inspiration.
+Control the number of frames per second with `fps(n)`.
+Look inside the [examples](examples) directory for examples and inspiration.
 
-# keyboard
+# usage
+
+## alt+i
+Show/hide help window with all functions
 
 ### cmd/ctrl+enter
-Save and evaluate code. If the code errors, the error is displayed on the lower left. The URL is updated with a shareable link.
+Save and evaluate code. If the code errors, the error is displayed on the lower left.
+The URL is updated with a shareable link.
 
 ### cmd/ctrl+shift+d
 Duplicate current line

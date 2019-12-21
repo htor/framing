@@ -1,8 +1,10 @@
 export function vendorPrefix (prop, target) {
-  return ['', 'ms', 'moz', 'webkit'].map((p, i) =>
-    p + (i > 0 ? prop.charAt(0).toUpperCase() + prop.slice(1) : prop)
-  ).map(prefixedProp => target[prefixedProp])
-    .filter(prefixed => prefixed)[0]
+  const prefixes = ['', 'ms', 'moz', 'webkit']
+  for (const prefix of prefixes) {
+    const ident = `${prefix}${prop.charAt(0).toUpperCase()}${prop.slice(1)}`
+    const vendor = target[ident]
+    if (vendor) target[prop] = vendor
+  }
 }
 
 export function getQueryParam (name) {
@@ -30,7 +32,7 @@ export function setFavicon () {
   }, 1000)
 }
 
-document.exitFullscreen = vendorPrefix('exitFullscreen', document) ||
-  vendorPrefix('cancelFullScreen', document)
-document.documentElement.requestFullscreen = vendorPrefix('requestFullscreen', document.documentElement) ||
-  vendorPrefix('requestFullScreen', document.documentElement)
+vendorPrefix('exitFullscreen', document)
+vendorPrefix('cancelFullScreen', document)
+vendorPrefix('requestFullscreen', document.documentElement)
+vendorPrefix('requestFullScreen', document.documentElement)

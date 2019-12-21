@@ -1,5 +1,9 @@
 @import 'codemirror/lib/codemirror.css';
 
+:root {
+  --color-gray: #f1f1f1;
+}
+
 html,
 body {
   min-height: 100%;
@@ -10,6 +14,10 @@ body {
   font: 16px/1.1 monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+canvas {
+  background: var(--color-gray);
 }
 
 code {
@@ -26,14 +34,50 @@ output {
   background: black;
 }
 
-code.hidden,
-output.hidden {
-  opacity: 0;
-  pointer-events: none;
+aside {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2em;
+  background: var(--color-gray);
+  color: black;
+  opacity: 1;
+  transition: .2s all;
+  font-size: 1rem;
+  column-count: 2;
+  overflow: auto;
 }
 
-canvas {
-  background: #f1f1f1;
+aside h1 {
+  display: inline-block;
+  font: inherit;
+  background: black;
+  color: white;
+  margin: 0;
+}
+
+aside p {
+  margin: 0;
+}
+
+aside h1 + p {
+  margin-top: .6em;
+}
+
+aside p + h1 {
+  margin-top: 1.2em;
+}
+
+
+code[hidden],
+output[hidden],
+section[hidden] {
+  display: block;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
 }
 
 .CodeMirror {
@@ -51,10 +95,12 @@ canvas {
 
 .CodeMirror pre {
   z-index: 0;
+  padding: 0;
 }
 
 .CodeMirror-cursor {
   border-left: 2px solid white !important;
+  z-index: 1 !important;
 }
 
 .CodeMirror-line span {
@@ -63,5 +109,9 @@ canvas {
 
 .CodeMirror-line > span {
   background: black;
+  padding: 0 !important;
+}
+
+.CodeMirror-lines {
   padding: 0 !important;
 }

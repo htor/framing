@@ -20,7 +20,7 @@ export default {
     }),
     resolve({ browser: true }),
     commonjs(),
-    buble(),
+    buble({ transforms: { dangerousForOf: true, asyncAwait: false }}),
     process.env.ROLLUP_WATCH && serve({ contentBase: '.', port: 8080 })
   ],
   onwarn: (message) => {

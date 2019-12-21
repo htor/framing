@@ -92,6 +92,8 @@ window.gimg = (arg) => {
   return img
 }
 window.drimg = (...args) => ctx.drawImage(...args)
+window.loop = (arg) => shouldLoop = arg
+window.log = (...args) => logMessage(args.join(','))
 window.onresize = () => {
   window.w = canvas.width = window.innerWidth
   window.h = canvas.height = window.innerHeight
@@ -102,9 +104,6 @@ window.onmousemove = (event) => {
   window.mx = event.clientX
   window.my = event.clientY
 }
-window.loop = (arg) => shouldLoop = arg
-window.log = (...args) => logMessage(args.join(','))
-
 function logMessage (message) {
   if (String(message) !== output.textContent) {
     output.textContent = message
