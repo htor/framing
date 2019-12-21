@@ -39,8 +39,7 @@ Control the number of frames per second with `fps(n)`. Look inside the [examples
 # shortcuts
 
 ### cmd/ctrl+enter
-Save and evaluate code. If the code errors, the error is displayed on the lower left and
-the previous code will continue to be evaluated. When saving, the URL is updated with a shareable link to your piece.
+Save and evaluate code. If the code errors, the error is displayed on the lower left. The URL is updated with a shareable link.
 
 ### cmd/ctrl+shift+d
 Duplicate current line
