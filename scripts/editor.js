@@ -37,7 +37,7 @@ function start () {
   })
   isHidden = getQueryParam('hide') === 'true'
   const id = getQueryParam('id')
-  editor.setValue(id ? decodeURIComponent(atob(id)) : ' ')
+  editor.setValue(id ? decodeURIComponent(atob(id)) : '')
   editor.focus()
   toggleCode()
   saveCode(editor)
@@ -59,8 +59,11 @@ function selectLine (editor) {
 }
 
 function togglefullscreen () {
-  isFullscreen ? document.exitFullscreen() : document.documentElement.requestFullscreen()
-  isFullscreen = !isFullscreen
+  if (isFullscreen)  {
+    document.exitFullscreen()
+  } else {
+    document.documentElement.requestFullscreen()
+  }
 }
 
 function toggleCode () {
@@ -73,12 +76,11 @@ function toggleCode () {
 function saveCode (editor) {
   const code = editor.getValue()
   lang.evalCode(code)
-  lastCode = code
   setQueryParam('id', btoa(encodeURIComponent(code)))
   setFavicon()
 }
 
-window.onpopstate = start
-window.onclick = () => editor.focus()
-
+window.addEventListener('popstate', start)
+window.addEventListener('fullscreenchange', () => isFullscreen = !isFullscreen)
+window.addEventListener('click', () => editor.focus())
 start()

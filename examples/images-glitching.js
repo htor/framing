@@ -1,10 +1,7 @@
 // fetch image and re-draw it
-// using setup function to async setup things
 
-async function setup () {
-  img = await gimg('https://i.imgur.com/S7m2aFQ.jpg')
-  clear(0)
-}
+let img = await gimg('https://i.imgur.com/S7m2aFQ.jpg')
+clear(0)
 
 function draw () {
   let t = Math.ceil(abs(sin(ms() * 0.0001)) * 10)

@@ -49,10 +49,19 @@ canvas {
   background: rgba(255, 255, 255, .6) !important;
 }
 
-.CodeMirror pre { z-index: 0 } /* fix selection */
-.CodeMirror-cursor { border-left: 2px solid white !important }
+.CodeMirror pre {
+  z-index: 0;
+}
+
+.CodeMirror-cursor {
+  border-left: 2px solid white !important;
+}
 
 .CodeMirror-line span {
   color: white !important;
+}
+
+.CodeMirror-line > span {
   background: black;
+  padding: 0 !important;
 }

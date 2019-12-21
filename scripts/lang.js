@@ -86,13 +86,10 @@ window.rgrad = (...args) => {
   return g
 }
 window.gimg = (arg) => {
-  return new Promise((resolve, reject) => {
-    let img = new Image(arg)
-    img.crossOrigin = 'anonymous'
-    img.onload = resolve(img)
-    img.onerror = reject()
-    img.src = arg
-  })
+  const img = new Image(arg)
+  img.crossOrigin = 'anonymous'
+  img.src = arg
+  return img
 }
 window.drimg = (...args) => ctx.drawImage(...args)
 window.onresize = () => {
@@ -108,36 +105,38 @@ window.onmousemove = (event) => {
 window.loop = (arg) => shouldLoop = arg
 window.log = (...args) => logMessage(args.join(','))
 
-
 function logMessage (message) {
   if (String(message) !== output.textContent) {
     output.textContent = message
   }
 }
 
-function drawFrame () {
-  if (clearFrame) {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-  }
-  try {
-    draw()
-  } catch (error) {
-    logMessage(error.message)
-  }
-  if (shouldLoop) {
-    frameTimer = setTimeout(() => {
-      window.requestAnimationFrame(drawFrame)
-    }, 1000 / frameRate)
-  }
-}
-
 export function evalCode (code) {
   window.clearTimeout(frameTimer)
+  window.setup = window.draw = null
   try {
     logMessage(realEval(code))
     lastCode = code
-    window.setup && window.setup()
-    window.draw && window.requestAnimationFrame(drawFrame)
+    if (window.setup) {
+      window.setup()
+    }
+    window.requestAnimationFrame(function drawFrame () {
+      if (clearFrame) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+      }
+      try {
+        if (window.draw) {
+          window.draw()
+        }
+      } catch (error) {
+        logMessage(error.message)
+      }
+      if (shouldLoop) {
+        frameTimer = setTimeout(() => {
+          window.requestAnimationFrame(drawFrame)
+        }, 1000 / frameRate)
+      }
+    })
   } catch (error) {
     logMessage(error.message)
   }
