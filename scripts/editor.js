@@ -89,12 +89,13 @@ function saveCode (editor) {
 
 async function loadHelp () {
   const response = await fetch('functions.md')
-  let text = await response.text()
-  let newLines = []
-  for (line of text.split('\n')) {
-    if (line.startsWith('# ')) {}
-    else if (line.startsWith('## ')) newLines.push(`<h1>${line.slice(2)}</h1>`)
-    else if (line.trim()) newLines.push(`<p>${line}</p>`)
+  const text = await response.text()
+  const lines = text.split('\n')
+  const newLines = []
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith('# ')) {}
+    else if (lines[i].startsWith('## ')) newLines.push(`<h1>${lines[i].slice(2)}</h1>`)
+    else if (lines[i].trim()) newLines.push(`<p>${lines[i]}</p>`)
   }
   help.innerHTML = newLines.join('\n')
 }

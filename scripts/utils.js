@@ -1,7 +1,7 @@
 export function vendorPrefix (prop, target) {
   const prefixes = ['', 'ms', 'moz', 'webkit']
-  for (const prefix of prefixes) {
-    const ident = `${prefix}${prop.charAt(0).toUpperCase()}${prop.slice(1)}`
+  for (let i = 0; i < prefixes.length; i++) {
+    const ident = `${prefixes[i]}${prop.charAt(0).toUpperCase()}${prop.slice(1)}`
     const vendor = target[ident]
     if (vendor) target[prop] = vendor
   }
