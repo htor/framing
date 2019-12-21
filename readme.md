@@ -1,6 +1,6 @@
 # repeat-editor
 
-A simple editor for live coding [canvas](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) graphics. Demo: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwYnJlYXRoaW5nJTIwZ3JhZGllbnQlMEElMEFsZXQlMjB0JTNEYWJzKHNpbihtcygpKi4wMDA5KSoyMDUpJTBBbGV0JTIwZyUzRHJncmFkKHclMkYzJTJDaCUyRjIlMkN3JTJGMi4xJTJDdyUyRjIlMkNoJTJGMiUyQzApJTBBbGV0JTIwYyUzRHJnYmEoMjM0JTJDdCUyNjI1NSUyQ3QtMjU1JTJDMSklMEFnLnN0b3AoMCUyQyUyMCclMjNmMDZkMDYnKSUwQSUyMC5zdG9wKC4zJTJDYyklMEElMjAuc3RvcCgxJTJDJ2JsdWUnKSUwQWZzdHlsZShnKSUwQWZyZWN0KDAlMkMwJTJDdyUyQ2gpJTBBZw==)
+A simple editor for live coding [canvas](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) graphics. Demo: [https://hermantorjussen.no/repeat](https://hermantorjussen.no/repeat/?id=JTJGJTJGJTIwZ2VuZXJhdGUlMjAyLWRpbWVuc2lvbmFsJTIwdGV4dHVyZSUyMHdpdGglMjBub2lzZSUyMGZ1bmN0aW9uJTBBJTJGJTJGJTIwdGhpcyUyMGlzJTIwdXNpbmclMjBzaW1wbGV4JTIwdW5kZXJuZWF0aCUyMChwZXJsaW4tbGlrZSklMEFmdW5jdGlvbiUyMGRyYXclMjAoKSUyMCU3QiUwQSUyMCUyMGJncm91bmQoJ3JnYmEoMjAlMkM4MCUyQzIwMiUyQzEpJyklMEElMjAlMjBsZXQlMjBzJTIwJTNEJTIwMTglMEElMjAlMjBsZXQlMjB4JTIwJTNEJTIwMCUzQiUyMGxldCUyMHklMjAlM0QlMjAwJTNCJTIwbGV0JTIwaW5jJTIwJTNEJTIwLTAuMDc4JTBBJTIwJTIwZm9yJTIwKGxldCUyMGklMjAlM0QlMjAwJTNCJTIwaSUyMCUzQyUyMHclM0IlMjBpJTIwJTJCJTNEJTIwcyUyQyUyMHglMjAlM0QlMjAwJTJDJTIweSUyMCUyQiUzRCUyMGluYyklMjAlN0IlMEElMjAlMjAlMjAlMjBmb3IlMjAobGV0JTIwaiUyMCUzRCUyMDAlM0IlMjBqJTIwJTNDJTIwaCUzQiUyMGolMjAlMkIlM0QlMjBzJTJDJTIweCUyMCUyQiUzRCUyMGluYyklMjAlN0IlMEElMjAlMjAlMjAlMjAlMjAlMjBsZXQlMjBuJTIwJTNEJTIwbWFwKG5vaXNlKHglMkMlMjB5KSUyQyUyMC0xJTJDJTIwMSUyQyUyMDAlMkMlMjAxKSUwQSUyMCUyMCUyMCUyMCUyMCUyMGZzdHlsZSglNjByZ2JhKDI1NSUyQzIyJTJDMjQlMkMlMjQlN0JuJTdEKSU2MCklMEElMjAlMjAlMjAlMjAlMjAlMjBmcmVjdChpJTJDJTIwaiUyQyUyMHMlMkMlMjBzKSUwQSUyMCUyMCUyMCUyMCU3RCUwQSUyMCUyMCU3RCUwQSU3RCUwQQ%3D%3D&hidden=false)
 
 ![repeat: editor for live coding](examples/screen.png)
 
@@ -36,7 +36,7 @@ function draw () {
 
 Control the number of frames per second with `fps(n)`. Look inside the [examples](examples) directory for examples and inspiration.
 
-# shortcuts
+# keyboard
 
 ### cmd/ctrl+enter
 Save and evaluate code. If the code errors, the error is displayed on the lower left. The URL is updated with a shareable link.
