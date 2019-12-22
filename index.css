@@ -24,6 +24,7 @@ code {
   position: absolute;
   top: 2em;
   left: 2em;
+  bottom: 4em;
 }
 
 output {
@@ -81,7 +82,7 @@ section[hidden] {
 }
 
 .CodeMirror {
-  min-height: 100vh;
+  min-height: calc(100vh - 6em);
   line-height: 1.08;
   background: transparent;
 }

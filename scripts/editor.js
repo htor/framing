@@ -15,8 +15,9 @@ const help = document.querySelector('aside')
 let editor = null
 let isFullscreen = false
 let isHidden = false
+let lastCode = ''
 
-function start () {
+function setup () {
   canvas.width = window.innerWidth
   canvas.height = window.innerHeight
   editor = editor || CodeMirror(input, {
@@ -41,8 +42,8 @@ function start () {
   const id = getQueryParam('id')
   editor.setValue(id ? decodeURIComponent(atob(id)) : '')
   editor.focus()
-  toggleCode()
-  saveCode(editor)
+  input.toggleAttribute('hidden', isHidden)
+  output.toggleAttribute('hidden', isHidden)
 }
 
 function duplicateLine (editor) {
@@ -65,6 +66,13 @@ function toggleHelp () {
   toggleCode()
 }
 
+function toggleCode () {
+  isHidden = !isHidden
+  input.toggleAttribute('hidden', isHidden)
+  output.toggleAttribute('hidden', isHidden)
+  setQueryParam('hidden', isHidden)
+}
+
 function toggleFullscreen () {
   if (document.fullscreenElement)  {
     document.exitFullscreen()
@@ -73,18 +81,14 @@ function toggleFullscreen () {
   }
 }
 
-function toggleCode () {
-  input.toggleAttribute('hidden', isHidden)
-  output.toggleAttribute('hidden', isHidden)
-  setQueryParam('hidden', isHidden)
-  isHidden = !isHidden
-}
-
-function saveCode (editor) {
+function saveCode (editor, updateUrl = true) {
   const code = editor.getValue()
   lang.evalCode(code)
-  setQueryParam('id', btoa(encodeURIComponent(code)))
-  setFavicon()
+  if (code !== lastCode && updateUrl) {
+    lastCode = code
+    setQueryParam('id', btoa(encodeURIComponent(code)))
+    setFavicon()
+  }
 }
 
 async function loadHelp () {
@@ -101,7 +105,10 @@ async function loadHelp () {
 }
 
 window.addEventListener('click', () => editor.focus())
-window.addEventListener('popstate', start)
+window.addEventListener('popstate', (event) => {
+  setup()
+  saveCode(editor, false)
+})
 window.addEventListener('keydown', (event) => {
   if (event.altKey && event.keyCode === 73) toggleHelp() // alt-i
   if (event.altKey && event.keyCode === 72) toggleCode() // alt-h
@@ -109,4 +116,5 @@ window.addEventListener('keydown', (event) => {
 })
 
 loadHelp()
-start()
+setup()
+saveCode(editor)
