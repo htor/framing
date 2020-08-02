@@ -20,15 +20,15 @@ ctx.fillStyle('orange')
 ctx.fillRect(500, 500, 100, 100)
  ```
 
-To run code for each frame, define a function called `draw()`.
-The body of this function is called for each frame:
+To run code for each frame, define a function `draw(n)`.
+This function will be called for each frame. Current frame number is passed as `n`:
 
 ```js
 fps(6)
 fstyle('orange')
 var s=20,x=0,y=0
 
-function draw () {
+function draw (n) {
  for (x=0;x<w;x+=s) {
    for (y=0;y<h;y+=s) {
      frect(x, y, s-5, s-5)

@@ -9,6 +9,7 @@ const realEval = eval
 let lastCode = ''
 let randomSeed = 0
 let frameRate = 120
+let frameCount = 0
 let clearFrame = true
 let shouldLoop = true
 let frameTimer = null
@@ -106,6 +107,7 @@ window.onmousemove = (event) => {
   window.mx = event.clientX
   window.my = event.clientY
 }
+
 function logMessage (message) {
   if (String(message) !== output.textContent) {
     output.textContent = message
@@ -114,7 +116,7 @@ function logMessage (message) {
 
 export function evalCode (code) {
   window.clearTimeout(frameTimer)
-  window.setup = window.draw = null
+  window.setup = window.draw = frameCount = 0
   try {
     logMessage(realEval(code))
     lastCode = code
@@ -127,7 +129,7 @@ export function evalCode (code) {
           if (clearFrame) {
             ctx.clearRect(0, 0, canvas.width, canvas.height)
           }
-          window.draw()
+          window.draw(++frameCount)
         }
       } catch (error) {
         logMessage(error.message)
