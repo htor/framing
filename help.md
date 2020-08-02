@@ -1,6 +1,15 @@
-# functions
+# Globals
 
-## math
+w
+h
+mx
+my
+PI
+TWO_PI
+ctx
+
+# Functions
+
 sin(n)
 cos(n)
 abs(n)
@@ -11,17 +20,7 @@ rseed(seed)
 noise(x, y)
 norm(value, low, high)
 map(value, low1, high1, low2, high2)
-
-## globals
-w
-h
-mx
-my
-PI
-TWO_PI
-ctx
-
-## shapes
+<br>
 sstyle(style)
 fstyle(style)
 begin()
@@ -54,8 +53,8 @@ shoffx(arg)
 shoffy(arg)
 lgrad(x0, y0, x1, y1)
 rgrad(x0, y0, x1, y1)
-
-## utils
+<br>
+title(title)
 ms()
 fps(n)
 loop(boolean)
@@ -66,17 +65,25 @@ bground(color)
 rgba(r, g, b, a)
 gimg(imgSrc)
 drimg(img)
-
-
-## transforms
+<br>
 push()
 pop()
 rotate(degs)
 tslate(x, y)
 scale(x ,y)
 treset()
-
-## text
+<br>
 font(style)
 ftext(text, x, y maxWidth?)
 stext(text, x, y maxWidth?)
+
+# Shortcuts
+
+f1 - show/hide help window
+f2 - toggle hiding code and output
+f3 - toggle fullscreen mode
+cmd/ctrl+enter - save and evaluate code
+cmd/ctrl+shift+d - duplicate current line
+cmd/ctrl+shift+k - comment/uncomment current line
+cmd/ctrl+l - select current line(s)
+back/forward - moves through save history

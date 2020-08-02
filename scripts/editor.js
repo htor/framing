@@ -16,6 +16,7 @@ let editor = null
 let isFullscreen = false
 let isHidden = false
 let lastCode = ''
+const greeting = `// Type code here. Press F1 for help`
 
 function setup () {
   canvas.width = window.innerWidth
@@ -23,6 +24,7 @@ function setup () {
   editor = editor || CodeMirror(input, {
     mode: { name: 'javascript', globalVars: true },
     lineWrapping: true,
+    scrollbarStyle: 'null',
     matchBrackets: true,
     autoCloseBrackets: true,
     extraKeys: {
@@ -40,7 +42,7 @@ function setup () {
   })
   isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
-  editor.setValue(id ? decodeURIComponent(atob(id)) : '')
+  editor.setValue(id ? decodeURIComponent(atob(id)) : greeting)
   editor.focus()
   input.toggleAttribute('hidden', isHidden)
   output.toggleAttribute('hidden', isHidden)
@@ -92,13 +94,12 @@ function saveCode (editor, updateUrl = true) {
 }
 
 async function loadHelp () {
-  const response = await fetch('functions.md')
+  const response = await fetch('help.md')
   const text = await response.text()
   const lines = text.split('\n')
   const newLines = []
   for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith('# ')) {}
-    else if (lines[i].startsWith('## ')) newLines.push(`<h1>${lines[i].slice(2)}</h1>`)
+    if (lines[i].startsWith('# ')) newLines.push(`<h1>${lines[i].slice(1)}</h1>`)
     else if (lines[i].trim()) newLines.push(`<p>${lines[i]}</p>`)
   }
   help.innerHTML = newLines.join('\n')
@@ -110,9 +111,12 @@ window.addEventListener('popstate', (event) => {
   saveCode(editor, false)
 })
 window.addEventListener('keydown', (event) => {
-  if (event.altKey && event.keyCode === 73) toggleHelp() // alt-i
-  if (event.altKey && event.keyCode === 72) toggleCode() // alt-h
-  if (event.altKey && event.keyCode === 70) toggleFullscreen() // alt-f
+  if (event.keyCode === 112) toggleHelp() // f1
+  if (event.keyCode === 113) toggleCode() // f2
+  if (event.keyCode === 114) {
+    event.preventDefault()
+    toggleFullscreen() // f3
+  }
 })
 
 loadHelp()

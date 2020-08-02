@@ -25,6 +25,7 @@ window.w = window.innerWidth
 window.h = window.innerHeight
 window.mx = 0
 window.my = 0
+window.title = (title) => document.title = title
 window.begin = () => ctx.beginPath()
 window.close = () => ctx.closePath()
 window.stroke = () => ctx.stroke()
