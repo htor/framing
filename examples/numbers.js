@@ -5,7 +5,6 @@ fps(50)
 font(`${s}px monospace`)
 fstyle('orange')
 fps(60)
-clear(1)
 
 function draw () {
   t = ms()

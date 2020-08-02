@@ -49,7 +49,8 @@ window.rotate = (degs) => ctx.rotate(degs * PI / 180)
 window.tslate = (...args) => ctx.translate(...args)
 window.scale = (...args) => ctx.scale(...args)
 window.treset = () => ctx.setTransform(1, 0, 0, 1, 0, 0)
-window.clear = (arg) => clearFrame = arg
+window.clear = () => ctx.clearRect(0, 0, w, h)
+window.clearf = (arg) => clearFrame = arg
 window.bground = (arg) => { push(); fstyle(arg); frect(0, 0, w, h); pop() }
 window.ms = () => (new Date()) - startTime
 window.fps = (arg) => frameRate = arg
@@ -121,11 +122,11 @@ export function evalCode (code) {
       window.setup()
     }
     window.requestAnimationFrame(function drawFrame () {
-      if (clearFrame) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
-      }
       try {
         if (window.draw) {
+          if (clearFrame) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+          }
           window.draw()
         }
       } catch (error) {

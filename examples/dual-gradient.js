@@ -1,4 +1,7 @@
 // draw two grascale gradients
+
+title('dual gradient')
+
 let psize = 20
 bground('black')
 for (let x = 0; x < w; x += psize) {

@@ -1,5 +1,7 @@
 // floating circles
-clear(false)
+
+title('floating circls')
+clearf(false)
 
 function draw () {
   push()

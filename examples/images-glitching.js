@@ -1,7 +1,13 @@
 // fetch image and re-draw it
 
-let img = await gimg('https://i.imgur.com/S7m2aFQ.jpg')
-clear(0)
+title('image$ glitching')
+clearf(false)
+
+var img
+
+async function setup () {
+  img = await gimg('https://i.imgur.com/S7m2aFQ.jpg')
+}
 
 function draw () {
   let t = Math.ceil(abs(sin(ms() * 0.0001)) * 10)

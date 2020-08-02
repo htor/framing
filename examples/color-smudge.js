@@ -1,6 +1,7 @@
 // color smudging, based on floating-circles.js
 
-clear(0)
+title('color smudge')
+clearf(0)
 
 function draw () {
   push()

@@ -58,7 +58,8 @@ title(title)
 ms()
 fps(n)
 loop(boolean)
-clear(boolean)
+clear()
+clearf(boolean)
 log(message)
 comp(type)
 bground(color)
@@ -82,6 +83,7 @@ stext(text, x, y maxWidth?)
 f1 - show/hide help window
 f2 - toggle hiding code and output
 f3 - toggle fullscreen mode
+f5 - discard code and refresh
 cmd/ctrl+enter - save and evaluate code
 cmd/ctrl+shift+d - duplicate current line
 cmd/ctrl+shift+k - comment/uncomment current line

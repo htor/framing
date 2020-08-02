@@ -1,6 +1,11 @@
 // generate hypnotic pattern
-var psize = 22; var achan = 255; var tfactor = 0.000028
-clear(true)
+
+title('hypnotic')
+
+var psize = 22
+var achan = 255
+var tfactor = 0.000028
+fps(56)
 
 function draw () {
   for (var x = 0; x < w; x += psize) {

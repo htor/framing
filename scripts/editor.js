@@ -117,6 +117,11 @@ window.addEventListener('keydown', (event) => {
     event.preventDefault()
     toggleFullscreen() // f3
   }
+  if (event.keyCode === 116) {
+    event.preventDefault()
+    setQueryParam('id', '') // f5
+    window.location.reload()
+  }
 })
 
 loadHelp()
