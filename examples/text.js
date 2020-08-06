@@ -1,4 +1,6 @@
 // draw some text
+
+title('text')
 font('200px sans-serif')
 fstyle('red')
 ftext('11', 50, 400)

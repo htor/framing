@@ -1,5 +1,7 @@
 // raining numbers
 
+title('numbers raining')
+
 let x; let y; let s = 14; t = ms()
 fps(50)
 font(`${s}px monospace`)

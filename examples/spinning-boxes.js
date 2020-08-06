@@ -1,5 +1,8 @@
 // spinning boxes made
 // using transforms
+
+title('spinning boxes')
+
 function draw () {
   push()
   fstyle('gold')

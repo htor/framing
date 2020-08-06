@@ -1,3 +1,5 @@
+title('line pattern')
+
 let x; let y; let x2; let y2; let s = 12
 lwidth(0.5)
 begin()

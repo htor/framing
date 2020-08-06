@@ -1,5 +1,8 @@
 // draw a triangle
 // by closing path
+
+title('triangle')
+
 begin()
 move(w / 2, h / 2)
 line(w / 2 - 50, h / 2 - 50)

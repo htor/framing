@@ -1,5 +1,7 @@
 // breathing gradient
 
+title('breathing gradient')
+
 function draw () {
   let t = abs(sin(ms() * 0.0002) * 255)
   let g = rgrad(w / 2, h / 2, w / 4, w / 2, h / 2, 0)

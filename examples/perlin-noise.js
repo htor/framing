@@ -1,5 +1,8 @@
 // generate 2-dimensional texture with noise function
 // this is using simplex underneath (perlin-like)
+
+title('noise')
+
 function draw () {
   let s = 18
   let x = 0; let y = 0; let inc = 0.048
