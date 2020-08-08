@@ -17,6 +17,7 @@ let frameTimer = null
 window.ctx = canvas.getContext('2d')
 window.sin = Math.sin
 window.cos = Math.cos
+window.atan2 = Math.atan2
 window.abs = Math.abs
 window.min = Math.min
 window.max = Math.max
@@ -56,13 +57,14 @@ window.pins = (...args) => ctx.isPointInStroke(...args)
 window.push = () => ctx.save()
 window.pop = () => ctx.restore()
 window.tslate = (...args) => ctx.translate(...args)
-window.rotate = (degs) => ctx.rotate(degs * PI / 180)
+window.rotate = (radians) => ctx.rotate(radians)
 window.scale = (...args) => ctx.scale(...args)
 window.treset = () => ctx.setTransform(1, 0, 0, 1, 0, 0)
 window.clear = () => ctx.clearRect(0, 0, w, h)
 window.clearf = (arg) => clearFrame = arg
 window.bground = (arg) => { push(); fstyle(arg); frect(0, 0, w, h); pop() }
 window.ms = () => (new Date()) - startTime
+window.date = () => new Date()
 window.fps = (arg) => frameRate = arg
 window.title = (title) => document.title = title
 window.loop = (arg) => shouldLoop = arg
@@ -71,8 +73,11 @@ window.log = (...args) => logMessage(args.join(','))
 window.rand = (min, max) => Math.floor(Math.random() * (max - min + 1) + min)
 window.map = (value, low1, high1, low2, high2) => low2 + (high2 - low2) * ((value - low1) / (high1 - low1))
 window.norm = (value, low, high) => (value - low) / (high - low)
+window.constrain = (value, min, max) => Math.min(Math.max(value, min), max)
 window.rseed = (seed) => seed !== randomSeed && seedrandom((randomSeed = seed), { global: true })
 window.noise = (x, y) => simplex.noise2D(x, y)
+window.degrees = (radians) => radians * 180 / PI
+window.dist = (x1, y1, x2, y2) => Math.hypot(x2 - x1, y2 - y1)
 
 window.comp = (arg) => ctx.globalCompositeOperation = arg
 window.alpha = (arg) => ctx.globalAlpha = arg
@@ -100,24 +105,27 @@ window.rgrad = (...args) => {
   g.stop = (...args) => { g.addColorStop(...args); return g }
   return g
 }
-window.gimg = (arg) => {
+window.image = (arg) => {
   const img = new Image(arg)
   img.crossOrigin = 'anonymous'
   img.src = arg
   return img
 }
-window.dimg = (...args) => ctx.drawImage(...args)
+window.imaged = (...args) => ctx.getImageData(...args)
+window.pimaged = (...args) => ctx.putImageData(...args)
+window.dimage = (...args) => ctx.drawImage(...args)
+window.on = (event, callback) => window.addEventListener(event, callback)
 
-window.onresize = () => {
+window.addEventListener('resize', () => {
   window.w = canvas.width = window.innerWidth
   window.h = canvas.height = window.innerHeight
   evalCode(lastCode)
+})
 
-}
-window.onmousemove = (event) => {
+window.addEventListener('mousemove', (event) => {
   window.mx = event.clientX
   window.my = event.clientY
-}
+})
 
 function logMessage (message) {
   if (String(message) !== output.textContent) {
