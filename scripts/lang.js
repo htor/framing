@@ -3,7 +3,12 @@ import seedrandom from 'seedrandom'
 
 const startTime = new Date()
 const output = document.querySelector('output')
-const canvas = document.querySelector('canvas')
+const mainCanvas = document.querySelector('canvas')
+const offCanvas = document.querySelector('canvas[hidden]')
+const video = document.querySelector('video')
+
+const ctx = mainCanvas.getContext('2d')
+const offCtx = offCanvas.getContext('2d')
 const simplex = new OpenSimplex()
 const realEval = eval
 let lastCode = ''
@@ -14,13 +19,17 @@ let clearFrame = true
 let shouldLoop = true
 let frameTimer = null
 
-window.ctx = canvas.getContext('2d')
+window.ctx = ctx
+window.offCtx = offCtx
 window.sin = Math.sin
 window.cos = Math.cos
 window.atan2 = Math.atan2
 window.abs = Math.abs
 window.min = Math.min
 window.max = Math.max
+window.floor = Math.floor
+window.ceil = Math.ceil
+window.round = Math.round
 window.PI = Math.PI
 window.TWO_PI = Math.PI * 2
 window.w = window.innerWidth
@@ -105,20 +114,35 @@ window.rgrad = (...args) => {
   g.stop = (...args) => { g.addColorStop(...args); return g }
   return g
 }
+
+window.on = (event, callback) => window.addEventListener(event, callback)
+
 window.image = (arg) => {
   const img = new Image(arg)
   img.crossOrigin = 'anonymous'
   img.src = arg
   return img
 }
-window.imaged = (...args) => ctx.getImageData(...args)
-window.pimaged = (...args) => ctx.putImageData(...args)
+window.capture = (opts) => {
+  if (opts.src) {
+    video.src = opts.src
+  } else if (!video.srcObject) {
+    navigator.mediaDevices.getUserMedia(opts).then(stream => {
+      video.srcObject = stream
+    }).catch(_ => log('Error: video capture not allowed by user'))
+  }
+  return video
+}
+window.gidata = (...args) => ctx.getImageData(...args)
+window.pidata = (...args) => ctx.putImageData(...args)
 window.dimage = (...args) => ctx.drawImage(...args)
-window.on = (event, callback) => window.addEventListener(event, callback)
+window.gidataoff = (...args) => offCtx.getImageData(...args)
+window.pidataoff = (...args) => offCtx.putImageData(...args)
+window.dimageoff = (...args) => offCtx.drawImage(...args)
 
 window.addEventListener('resize', () => {
-  window.w = canvas.width = window.innerWidth
-  window.h = canvas.height = window.innerHeight
+  window.w = mainCanvas.width = offCanvas.width = window.innerWidth
+  window.h = mainCanvas.height = offCanvas.height = window.innerHeight
   evalCode(lastCode)
 })
 
@@ -143,7 +167,7 @@ export function evalCode (code) {
       try {
         if (window.draw) {
           if (clearFrame) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height)
           }
           window.draw(++frameCount)
         }

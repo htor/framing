@@ -9,7 +9,8 @@ import '../index.css'
 
 const input = document.querySelector('code')
 const output = document.querySelector('output')
-const canvas = document.querySelector('canvas')
+const mainCanvas = document.querySelector('canvas')
+const offCanvas = document.querySelector('canvas[hidden]')
 const help = document.querySelector('aside')
 
 let editor = null
@@ -19,8 +20,8 @@ let lastCode = ''
 const greeting = `// Type code here. Press F1 for help`
 
 function setup () {
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
+  mainCanvas.width = offCanvas.width = window.innerWidth
+  mainCanvas.height = offCanvas.height = window.innerHeight
   editor = editor || CodeMirror(input, {
     mode: { name: 'javascript', globalVars: true },
     lineWrapping: true,

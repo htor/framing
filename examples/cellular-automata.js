@@ -6,7 +6,7 @@ clear()
 
 let y = 1
 let box = { x: 450, y: 100, width: 500, height: 500 }
-let idata = imaged(box.x, box.y, box.width, box.height)
+let idata = gidata(box.x, box.y, box.width, box.height)
 let pixels = idata.data
 let rules = [0,1,0,0,1,0,1,1]
 // let rules = [1,0,0,0,0,0,0,1]
@@ -40,6 +40,6 @@ function draw () {
     }
   }
   if (++y > box.height) return
-  pimaged(idata, box.x, box.y)
+  pidata(idata, box.x, box.y)
   log(`[${rules.join(',')}]`)
 }
