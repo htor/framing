@@ -115,7 +115,15 @@ window.rgrad = (...args) => {
   return g
 }
 
-window.on = (event, callback) => window.addEventListener(event, callback)
+window.on = (() => {
+  const callbacks = {}
+  return (event, callback) => {
+    const oldCallback = callbacks[event]
+    if (oldCallback) window.removeEventListener(event, oldCallback)
+    window.addEventListener(event, callback)
+    callbacks[event] = callback
+  }
+})()
 
 window.image = (arg) => {
   const img = new Image(arg)
