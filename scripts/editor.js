@@ -14,7 +14,6 @@ const offCanvas = document.querySelector('canvas[hidden]')
 const help = document.querySelector('aside')
 
 let editor = null
-let isFullscreen = false
 let isHidden = false
 let lastCode = ''
 const greeting = `// Type code here. Press F1 for help`
@@ -23,7 +22,10 @@ function setup () {
   mainCanvas.width = offCanvas.width = window.innerWidth
   mainCanvas.height = offCanvas.height = window.innerHeight
   editor = editor || CodeMirror(input, {
-    mode: { name: 'javascript', globalVars: true },
+    mode: {
+      name: 'javascript',
+      globalVars: true
+    },
     lineWrapping: true,
     scrollbarStyle: 'null',
     matchBrackets: true,
@@ -31,14 +33,15 @@ function setup () {
     extraKeys: {
       'Cmd-Enter': () => saveCode(editor),
       'Ctrl-Enter': () => saveCode(editor),
-      'Tab': () => editor.replaceSelection('  '),
-      'Esc': () => editor.setCursor(editor.getCursor()),
+      'Tab': () => CodeMirror.commands.indentMore(editor),
+      'Shift-Tab': () => CodeMirror.commands.indentLess(editor),
       'Cmd-L': () => selectLine(editor),
       'Ctrl-L': () => selectLine(editor),
-      'Shift-Cmd-D': () => duplicateLine(editor),
-      'Shift-Cmd-K': () => editor.toggleComment(),
-      'Alt-I': () => {},
-      'Alt-H': () => {}
+      'Cmd-D': () => duplicateLine(editor),
+      'Ctrl-D': () => duplicateLine(editor),
+      'Cmd-K': () => CodeMirror.commands.toggleComment(editor),
+      'Ctrl-K': () => CodeMirror.commands.toggleComment(editor),
+      'Ctrl-H': () => {}
     }
   })
   isHidden = getQueryParam('hidden') === 'true'
@@ -67,6 +70,8 @@ function selectLine (editor) {
 function toggleHelp () {
   help.toggleAttribute('hidden')
   toggleCode()
+  if (help.hasAttribute('hidden')) editor.focus()
+  else help.focus()
 }
 
 function toggleCode () {
@@ -112,16 +117,15 @@ window.addEventListener('popstate', (event) => {
   saveCode(editor, false)
 })
 window.addEventListener('keydown', (event) => {
-  if (event.keyCode === 112) toggleHelp() // f1
-  if (event.keyCode === 113) toggleCode() // f2
-  if (event.keyCode === 114) {
+  if (event.key === 'Escape') {
     event.preventDefault()
-    toggleFullscreen() // f3
-  }
-  if (event.keyCode === 116) {
+    toggleHelp()
+  } else if (event.key === 'h' && event.ctrlKey) {
     event.preventDefault()
-    setQueryParam('id', '') // f5
-    window.location.reload()
+    toggleCode()
+  } else if (event.key === 'f' && event.ctrlKey) {
+    event.preventDefault()
+    toggleFullscreen()
   }
 })
 

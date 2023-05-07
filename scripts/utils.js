@@ -14,7 +14,7 @@ export function getQueryParam (name) {
 export function setQueryParam (name, value) {
   const params = new URLSearchParams(window.location.search)
   params.set(name, value)
-  const newUrl = `${window.location.protocol}//${window.location.host}${window.location.pathname}?${params}`
+  const newUrl = `${window.location.origin}${window.location.pathname}?${params}`
   window.history.pushState({ path: newUrl }, '', newUrl)
 }
 

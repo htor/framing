@@ -1,9 +1,15 @@
 {
   "name": "repeat-editor",
   "version": "1.0.1",
+  "author": "htor",
+  "license": "MIT",
   "description": "",
   "private": true,
   "main": "index.js",
+  "scripts": {
+    "start": "rollup --config --watch",
+    "build": "rollup --config"
+  },
   "dependencies": {
     "codemirror": "^5.35.0",
     "open-simplex-noise": "^1.6.0",
@@ -18,11 +24,5 @@
     "rollup-plugin-node-resolve": "^4.2.1",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1"
-  },
-  "scripts": {
-    "start": "rollup --config --watch",
-    "build": "rollup --config"
-  },
-  "author": "htor",
-  "license": "MIT"
+  }
 }

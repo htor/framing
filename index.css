@@ -4,6 +4,10 @@
   --color-gray: #f1f1f1;
 }
 
+:focus-visible {
+  outline: 0;
+}
+
 html,
 body {
   min-height: 100%;
@@ -49,13 +53,13 @@ aside {
   font-size: 1rem;
   column-count: 2;
   overflow: auto;
+  z-index: 5;
 }
 
 aside h1 {
   display: inline-block;
   font: inherit;
-  background: black;
-  color: white;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -83,7 +87,7 @@ section[hidden] {
 
 .CodeMirror {
   min-height: calc(100vh - 6em);
-  line-height: 1.08;
+  line-height: 1.16;
   background: transparent;
 }
 
@@ -100,17 +104,14 @@ section[hidden] {
 }
 
 .CodeMirror-cursor {
-  border-left: 2px solid white !important;
+  border-left: 3px solid white !important;
   z-index: 1 !important;
 }
 
 .CodeMirror-line span {
-  color: white !important;
-}
-
-.CodeMirror-line > span {
   background: black;
   padding: 0 !important;
+  color: white !important;
 }
 
 .CodeMirror-lines {

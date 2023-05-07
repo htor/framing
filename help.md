@@ -1,4 +1,4 @@
-# Globals
+# globals
 
 w
 h
@@ -8,7 +8,7 @@ PI
 TWO_PI
 ctx
 
-# Functions
+# functions
 
 sin(n)
 cos(n)
@@ -78,14 +78,13 @@ font(style)
 ftext(text, x, y maxWidth?)
 stext(text, x, y maxWidth?)
 
-# Shortcuts
+# shortcuts
 
-f1 - show/hide help window
-f2 - toggle hiding code and output
-f3 - toggle fullscreen mode
-f5 - discard code and refresh
-cmd/ctrl+enter - save and evaluate code
-cmd/ctrl+shift+d - duplicate current line
-cmd/ctrl+shift+k - comment/uncomment current line
-cmd/ctrl+l - select current line(s)
+esc - show/hide help window
 back/forward - moves through save history
+ctrl+h - toggle hiding code and output
+ctrl+f - toggle fullscreen mode
+cmd/ctrl+enter - save and evaluate code
+cmd/ctrl+d - duplicate current line
+cmd/ctrl+k - comment/uncomment current selection
+cmd/ctrl+l - select current line(s)

@@ -41,32 +41,30 @@ Look inside the [examples](examples) directory for examples and inspiration. Pre
 
 # usage
 
-### f1
+### esc
 Show/hide help window
 
-### f2
+### ctrl+h
 Toggle hiding code and output
 
-### f3
+### ctrl+f
 Toggle fullscreen mode
 
 ### cmd/ctrl+enter
 Save and evaluate code. If the code errors, the error is displayed on the lower left.
 The URL is updated with a shareable link.
 
-### cmd/ctrl+shift+d
+### cmd/ctrl+d
 Duplicate current line
 
-### cmd/ctrl+shift+k
-Comment/uncomment current line
+### cmd/ctrl+k
+Comment/uncomment current selection
 
 ### cmd/ctrl+l
 Select current line(s)
 
 ### back/forward
 Back and forward buttons in the browser moves through save history.
-
-
 
 
 # installing
