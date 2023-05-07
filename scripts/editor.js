@@ -1,3 +1,4 @@
+import '../index.css'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/edit/matchbrackets'
@@ -5,7 +6,6 @@ import 'codemirror/addon/edit/closebrackets'
 import 'codemirror/addon/comment/comment'
 import { getQueryParam, setQueryParam, setFavicon } from './utils'
 import * as lang from './lang'
-import '../index.css'
 
 const code = document.querySelector('code')
 const output = document.querySelector('output')
@@ -16,7 +16,7 @@ const help = document.querySelector('aside')
 let editor = null
 let isHidden = false
 let lastCode = ''
-const greeting = `// Type code here. Press F1 for help`
+const greeting = '// type code here. press <esc> for help'
 
 function setup () {
   mainCanvas.width = offCanvas.width = window.innerWidth
