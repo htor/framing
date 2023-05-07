@@ -7,7 +7,7 @@ import { getQueryParam, setQueryParam, setFavicon } from './utils'
 import * as lang from './lang'
 import '../index.css'
 
-const input = document.querySelector('code')
+const code = document.querySelector('code')
 const output = document.querySelector('output')
 const mainCanvas = document.querySelector('canvas')
 const offCanvas = document.querySelector('canvas[hidden]')
@@ -21,7 +21,7 @@ const greeting = `// Type code here. Press F1 for help`
 function setup () {
   mainCanvas.width = offCanvas.width = window.innerWidth
   mainCanvas.height = offCanvas.height = window.innerHeight
-  editor = editor || CodeMirror(input, {
+  editor = editor || CodeMirror(code, {
     mode: {
       name: 'javascript',
       globalVars: true
@@ -48,7 +48,7 @@ function setup () {
   const id = getQueryParam('id')
   editor.setValue(id ? decodeURIComponent(atob(id)) : greeting)
   editor.focus()
-  input.toggleAttribute('hidden', isHidden)
+  code.toggleAttribute('hidden', isHidden)
   output.toggleAttribute('hidden', isHidden)
 }
 
@@ -70,15 +70,15 @@ function selectLine (editor) {
 function toggleHelp () {
   help.toggleAttribute('hidden')
   toggleCode()
-  if (help.hasAttribute('hidden')) editor.focus()
-  else help.focus()
+  if (!help.hidden) help.focus()
 }
 
 function toggleCode () {
   isHidden = !isHidden
-  input.toggleAttribute('hidden', isHidden)
+  code.toggleAttribute('hidden', isHidden)
   output.toggleAttribute('hidden', isHidden)
   setQueryParam('hidden', isHidden)
+  if (!isHidden) editor.focus()
 }
 
 function toggleFullscreen () {
