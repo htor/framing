@@ -1,6 +1,6 @@
 # repeat-editor
 
-An editor for live coding JS graphics in using the 
+An editor for live coding JS graphics using the 
 [canvas API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
 
 <img src="images/screen.png" alt="repeat: editor for live coding" width="660">
