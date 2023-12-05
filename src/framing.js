@@ -42,11 +42,8 @@ function setup () {
       'Ctrl-Enter': () => saveCode(editor),
       'Tab': () => CodeMirror.commands.indentMore(editor),
       'Shift-Tab': () => CodeMirror.commands.indentLess(editor),
-      'Cmd-L': () => selectLine(editor),
       'Ctrl-L': () => selectLine(editor),
-      'Cmd-D': () => duplicateLine(editor),
       'Ctrl-D': () => duplicateLine(editor),
-      'Cmd-K': () => CodeMirror.commands.toggleComment(editor),
       'Ctrl-K': () => CodeMirror.commands.toggleComment(editor),
       'Ctrl-H': () => {}
     }

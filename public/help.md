@@ -1,14 +1,25 @@
-# globals
+# KEYBOARD
 
-w
-h
-mx
-my
-PI
-TWO_PI
-ctx
+ESC - show/hide help window
+CMD/CTRL+ENTER - save and evaluate code
+BROWSER BACK/FORWARD - moves through save history
+CTRL+H - toggle hiding code and output
+CTRL+F - toggle fullscreen mode
+CTRL+D - duplicate current line
+CTRL+K - comment/uncomment current selection
+CTRL+L - select current line(s)
 
-# functions
+# VARIABLES
+
+w – window width
+h - window height
+mx - mouse X position
+my - mouse Y position
+PI - Math.PI
+TWO_PI - Math.TWO_PI
+ctx – canvas context object
+
+# FUNCTIONS
 
 sin(n)
 cos(n)
@@ -77,14 +88,3 @@ treset()
 font(style)
 ftext(text, x, y maxWidth?)
 stext(text, x, y maxWidth?)
-
-# shortcuts
-
-esc - show/hide help window
-back/forward - moves through save history
-ctrl+h - toggle hiding code and output
-ctrl+f - toggle fullscreen mode
-cmd/ctrl+enter - save and evaluate code
-cmd/ctrl+d - duplicate current line
-cmd/ctrl+k - comment/uncomment current selection
-cmd/ctrl+l - select current line(s)
