@@ -1,7 +1,8 @@
 # framing
 
 An editor for live coding JS graphics using the 
-[canvas API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D).
+[canvas API](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). 
+Try out the [online editor](https://framing.neocities.org/)!
 
 <img src="images/screen.png" width="720">
 
