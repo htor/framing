@@ -7,7 +7,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "rollup --config --watch",
+    "dev": "rollup --config --watch",
     "build": "rollup --config"
   },
   "dependencies": {

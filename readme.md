@@ -73,7 +73,7 @@ Clone this repo and with [npm](https://npmjs.com/) do:
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
 It should open in your browser at [localhost:8080](http://localhost:8080).

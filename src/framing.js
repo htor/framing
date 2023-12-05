@@ -10,7 +10,7 @@ import * as lang from './lang'
 
 const SERVER_URL = 'https://framing.neocities.org'
 const code = document.querySelector('code')
-const output = document.querySelector('output')
+const nav = document.querySelector('nav')
 const mainCanvas = document.querySelector('canvas')
 const offCanvas = document.querySelector('canvas[hidden]')
 const help = document.querySelector('aside')
@@ -18,9 +18,9 @@ const help = document.querySelector('aside')
 let editor = null
 let isHidden = false
 let lastCode = ''
-const defaultCode = `// Welcome to frame! 
-// Press <ESC> for help.
+const defaultCode = `// Welcome to framing!
 
+title('doodle')
 for(s=50,x=0;x<w;x+=s)
   sellips(x,h/2,s*.2,s*.8,s)
 `
@@ -56,7 +56,7 @@ function setup () {
   editor.setValue(id ? decodeURIComponent(atob(id)) : defaultCode)
   editor.focus()
   code.toggleAttribute('hidden', isHidden)
-  output.toggleAttribute('hidden', isHidden)
+  nav.toggleAttribute('hidden', isHidden)
 }
 
 function duplicateLine (editor) {
@@ -83,7 +83,7 @@ function toggleHelp () {
 function toggleCode () {
   isHidden = !isHidden
   code.toggleAttribute('hidden', isHidden)
-  output.toggleAttribute('hidden', isHidden)
+  nav.toggleAttribute('hidden', isHidden)
   setQueryParam('hidden', isHidden)
   if (!isHidden) editor.focus()
 }
@@ -115,18 +115,16 @@ async function loadHelp () {
     if (lines[i].startsWith('# ')) newLines.push(`<h1>${lines[i].slice(1)}</h1>`)
     else if (lines[i].trim()) newLines.push(`<p>${lines[i]}</p>`)
   }
-  help.insertAdjacentHTML('beforeend', `<br>${newLines.join('\n')}`)
+  help.insertAdjacentHTML('afterbegin', `${newLines.join('\n')}`)
 }
 
 async function copyToClip(str) {
   await navigator.clipboard.writeText(str)
-  console.log(`Copied: ${str}!`)
 }
 
 function main() {
   window.addEventListener('click', async ({ target }) => {
-    console.log(target.id)
-    if (target.id === 'help') toggleHelp()
+    if (target.id === 'help' || target.id === 'close') toggleHelp()
     if (target.id === 'share') {
       let buttonText = target.textContent
       target.textContent = 'Link copied!'
