@@ -8,7 +8,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "rollup --config --watch",
-    "build": "rollup --config"
+    "build": "rm -rf dist; rollup --config"
   },
   "dependencies": {
     "codemirror": "^5.35.0",

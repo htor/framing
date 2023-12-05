@@ -75,7 +75,7 @@ window.bground = (arg) => { push(); fstyle(arg); frect(0, 0, w, h); pop() }
 window.ms = () => (new Date()) - startTime
 window.date = () => new Date()
 window.fps = (arg) => frameRate = arg
-window.title = (title) => document.title = title
+window.title = (title) => (void (document.title = title))
 window.loop = (arg) => shouldLoop = arg
 window.log = (...args) => logMessage(args.join(','))
 
