@@ -1,23 +1,11 @@
-// draw two grascale gradients
-
 title('dual gradient')
 
-let psize = 20
-bground('black')
-for (let x = 0; x < w; x += psize) {
-  for (let y = 0; y < h / 2; y += psize) {
-    let c = `rgba(255, 255, 255, ` +
-       map(x, 0, w, 1, 0) + `)`
-    fstyle(c)
-    frect(x, y, psize, psize)
-  }
-}
-
-for (let x = 0; x < w; x += psize) {
-  for (let y = h / 2; y < h; y += psize) {
-    let c = `rgba(255, 255, 255, ` +
-       map(x, 0, w, 0, 1) + `)`
-    fstyle(c)
-    frect(x, y, psize, psize)
-  }
+s=20
+for(x=0;x<w;x+=s) {
+  a=map(x,0,w,255,0)
+  aa=map(x,0,w,0,255)
+  fstyle(`rgb(${a},${a},${a})`)
+  frect(x,0,s,h/2)
+  fstyle(`rgb(${aa},${aa},${aa})`)
+  frect(x,h/2,s,h/2)
 }
