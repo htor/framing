@@ -1,27 +1,23 @@
-import autoprefixer from 'autoprefixer'
-import importer from 'postcss-import'
 import buble from 'rollup-plugin-buble'
 import commonjs from 'rollup-plugin-commonjs'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import serve from 'rollup-plugin-serve'
+import copy from 'rollup-plugin-copy'
 
 export default {
-  input: 'scripts/editor.js',
+  input: 'src/framing.js',
   output: {
-    file: 'scripts/editor.min.js',
+    file: 'dist/framing.js',
     format: 'cjs',
-    sourcemap: true
   },
   plugins: [
-    postcss({
-      minimize: { preset: 'default' },
-      plugins: [ importer(), autoprefixer({ browsers: '> 0.5%' }) ]
-    }),
-    resolve({ browser: true }),
+    postcss({minimize: {preset: 'default'}}),
+    resolve({browser: true}),
     commonjs(),
-    buble({ transforms: { asyncAwait: false }}),
-    process.env.ROLLUP_WATCH && serve({ contentBase: '.', port: 8080 })
+    buble({transforms: {asyncAwait: false}}),
+    copy({targets: [{src: ['public/*', 'src/index.html'], dest: 'dist'},]}),
+    process.env.ROLLUP_WATCH && serve({contentBase: 'dist', port: 8080})
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return

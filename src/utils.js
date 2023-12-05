@@ -31,6 +31,12 @@ export function setFavicon () {
   }, 1000)
 }
 
+export function sleep(millis, callback) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(callback()), millis)
+  })
+}
+
 vendorPrefix('exitFullscreen', document)
 vendorPrefix('cancelFullScreen', document)
 vendorPrefix('requestFullscreen', document.documentElement)

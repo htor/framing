@@ -69,7 +69,6 @@ Back and forward buttons in the browser moves through save history.
 
 
 # installing
-
 Clone this repo and with [npm](https://npmjs.com/) do:
 
 ```
@@ -77,14 +76,13 @@ npm install
 npm start
 ```
 
-It should open in your browser.
+It should open in your browser at [localhost:8080](http://localhost:8080).
 
 
 # inspiration
 
-Inspired by https://hydra-editor.glitch.me made by https://github.com/ojack
-and the programming module at https://www.khanacademy.org/computer-programming/new/pjs
-and http://processingjs.org/.
+Inspired by https://hydra-editor.glitch.me, the programming module at 
+https://www.khanacademy.org/computer-programming/new/pjs and http://processingjs.org/.
 
 # license
 

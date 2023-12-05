@@ -1,12 +1,14 @@
-import '../index.css'
+import 'codemirror/lib/codemirror.css'
+import './index.css'
 import CodeMirror from 'codemirror'
 import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
 import 'codemirror/addon/comment/comment'
-import { getQueryParam, setQueryParam, setFavicon } from './utils'
+import { getQueryParam, setQueryParam, setFavicon, sleep } from './utils'
 import * as lang from './lang'
 
+const SERVER_URL = 'https://framing.neocities.org'
 const code = document.querySelector('code')
 const output = document.querySelector('output')
 const mainCanvas = document.querySelector('canvas')
@@ -16,7 +18,12 @@ const help = document.querySelector('aside')
 let editor = null
 let isHidden = false
 let lastCode = ''
-const greeting = '// type code here. press <esc> for help'
+const defaultCode = `// Welcome to frame! 
+// Press <ESC> for help.
+
+for(s=50,x=0;x<w;x+=s)
+  sellips(x,h/2,s*.2,s*.8,s)
+`
 
 function setup () {
   mainCanvas.width = offCanvas.width = window.innerWidth
@@ -46,7 +53,7 @@ function setup () {
   })
   isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
-  editor.setValue(id ? decodeURIComponent(atob(id)) : greeting)
+  editor.setValue(id ? decodeURIComponent(atob(id)) : defaultCode)
   editor.focus()
   code.toggleAttribute('hidden', isHidden)
   output.toggleAttribute('hidden', isHidden)
@@ -108,27 +115,47 @@ async function loadHelp () {
     if (lines[i].startsWith('# ')) newLines.push(`<h1>${lines[i].slice(1)}</h1>`)
     else if (lines[i].trim()) newLines.push(`<p>${lines[i]}</p>`)
   }
-  help.innerHTML = newLines.join('\n')
+  help.insertAdjacentHTML('beforeend', `<br>${newLines.join('\n')}`)
 }
 
-window.addEventListener('click', () => editor.focus())
-window.addEventListener('popstate', (event) => {
-  setup()
-  saveCode(editor, false)
-})
-window.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    event.preventDefault()
-    toggleHelp()
-  } else if (event.key === 'h' && event.ctrlKey) {
-    event.preventDefault()
-    toggleCode()
-  } else if (event.key === 'f' && event.ctrlKey) {
-    event.preventDefault()
-    toggleFullscreen()
-  }
-})
+async function copyToClip(str) {
+  await navigator.clipboard.writeText(str)
+  console.log(`Copied: ${str}!`)
+}
 
-loadHelp()
-setup()
-saveCode(editor)
+function main() {
+  window.addEventListener('click', async ({ target }) => {
+    console.log(target.id)
+    if (target.id === 'help') toggleHelp()
+    if (target.id === 'share') {
+      let buttonText = target.textContent
+      target.textContent = 'Link copied!'
+      await copyToClip(`${SERVER_URL}/${window.location.search}`)
+      sleep(2000, () => target.textContent = buttonText)
+    } else {
+      editor.focus()
+    }
+  })
+  window.addEventListener('popstate', (event) => {
+    setup()
+    saveCode(editor, false)
+  })
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault()
+      toggleHelp()
+    } else if (event.key === 'h' && event.ctrlKey) {
+      event.preventDefault()
+      toggleCode()
+    } else if (event.key === 'f' && event.ctrlKey) {
+      event.preventDefault()
+      toggleFullscreen()
+    }
+  })
+
+  loadHelp()
+  setup()
+  saveCode(editor)
+}
+
+main()
