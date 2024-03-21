@@ -8,7 +8,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "rollup --config --watch",
-    "build": "rm -rf dist; rollup --config"
+    "build": "rm -rf dist; rollup --config",
+    "preversion": "npm run build",
+    "postversion": "git push --tags origin master"
   },
   "dependencies": {
     "@blu3r4y/lzma": "^2.3.3",
