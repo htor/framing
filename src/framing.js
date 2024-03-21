@@ -5,7 +5,7 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
 import 'codemirror/addon/comment/comment'
-import { getQueryParam, setQueryParam, setFavicon, sleep } from './utils'
+import { getQueryParam, setQueryParam, setFavicon, sleep, strToBase64, base64ToStr } from './utils'
 import * as lang from './lang'
 
 const SERVER_URL = 'https://framing.neocities.org'
@@ -56,7 +56,7 @@ function setup () {
   })
   isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
-  editor.setValue(id ? decodeURIComponent(atob(id)) : defaultCode)
+  editor.setValue(id ? base64ToStr(id) : defaultCode)
   editor.focus()
   code.toggleAttribute('hidden', isHidden)
   nav.toggleAttribute('hidden', isHidden)
@@ -104,7 +104,7 @@ function saveCode (editor, updateUrl = true) {
   lang.evalCode(code)
   if (code !== lastCode && updateUrl) {
     lastCode = code
-    setQueryParam('id', btoa(encodeURIComponent(code)))
+    setQueryParam('id', strToBase64(code))
     setFavicon()
   }
 }

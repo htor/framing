@@ -11,6 +11,7 @@
     "build": "rm -rf dist; rollup --config"
   },
   "dependencies": {
+    "@blu3r4y/lzma": "^2.3.3",
     "codemirror": "^5.35.0",
     "open-simplex-noise": "^1.6.0",
     "seedrandom": "^3.0.1"

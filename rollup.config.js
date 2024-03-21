@@ -17,7 +17,7 @@ export default {
     commonjs(),
     buble({transforms: {asyncAwait: false}}),
     copy({targets: [{src: ['public/*', 'src/index.html'], dest: 'dist'},]}),
-    process.env.ROLLUP_WATCH && serve({contentBase: 'dist', port: 8080})
+    process.env.ROLLUP_WATCH && serve({contentBase: 'dist', port: 8080, open: true })
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return

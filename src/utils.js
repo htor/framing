@@ -1,3 +1,5 @@
+import { compress, decompress } from "@blu3r4y/lzma"
+
 export function vendorPrefix (prop, target) {
   const prefixes = ['', 'ms', 'moz', 'webkit']
   for (let i = 0; i < prefixes.length; i++) {
@@ -35,6 +37,16 @@ export function sleep(millis, callback) {
   return new Promise((resolve) => {
     setTimeout(() => resolve(callback()), millis)
   })
+}
+
+export function strToBase64(str) {
+  const compBytes = Uint8Array.from(compress(str));
+  return btoa(String.fromCharCode.apply(null, compBytes));
+}
+
+export function base64ToStr(str) {
+  const compBytes = Uint8Array.from(atob(str), (m) => m.charCodeAt(0));
+  return decompress(compBytes);
 }
 
 vendorPrefix('exitFullscreen', document)
