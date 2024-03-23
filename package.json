@@ -26,5 +26,9 @@
     "rollup-plugin-node-resolve": "^4.2.1",
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-serve": "^1.0.1"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

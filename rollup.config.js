@@ -12,15 +12,16 @@ export default {
     format: 'cjs',
   },
   plugins: [
-    postcss({minimize: {preset: 'default'}}),
-    resolve({browser: true}),
+    postcss({ minimize: { preset: 'default' } }),
+    resolve({ browser: true }),
     commonjs(),
-    buble({transforms: {asyncAwait: false}}),
-    copy({targets: [{src: ['public/*', 'src/index.html'], dest: 'dist'},]}),
-    process.env.ROLLUP_WATCH && serve({contentBase: 'dist', port: 8080, open: true })
+    buble({ transforms: { asyncAwait: false } }),
+    copy({ targets: [{ src: ['public/*', 'src/index.html'], dest: 'dist' }] }),
+    process.env.ROLLUP_WATCH &&
+      serve({ contentBase: 'dist', port: 8080, open: true }),
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return
     console.error(message.toString())
-  }
+  },
 }

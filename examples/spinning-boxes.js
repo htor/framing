@@ -3,7 +3,7 @@
 
 title('spinning boxes')
 
-function draw () {
+function draw() {
   push()
   fstyle('gold')
   tslate(w / 2, h / 2)

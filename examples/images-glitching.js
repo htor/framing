@@ -5,7 +5,7 @@ clearf(false)
 
 const img = image('https://i.imgur.com/S7m2aFQ.jpg')
 
-function draw () {
+function draw() {
   let t = Math.ceil(abs(sin(ms() * 0.0001)) * 10)
   fps(t)
   let s = [w, w, w / 2, w / 4][rand(0, 4)]

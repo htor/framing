@@ -64,7 +64,7 @@ aside {
   background: var(--color-gray);
   color: black;
   opacity: 1;
-  transition: .2s all;
+  transition: 0.2s all;
   font-size: 1rem;
   overflow: auto;
   z-index: 5;
@@ -80,13 +80,12 @@ aside p {
 }
 
 aside h1 + p {
-  margin-top: .6em;
+  margin-top: 0.6em;
 }
 
 aside p + h1 {
   margin-top: 1.2em;
 }
-
 
 code[hidden],
 nav[hidden],
@@ -107,7 +106,7 @@ section[hidden] {
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line > span > span::selection {
-  background: rgba(255, 255, 255, .6) !important;
+  background: rgba(255, 255, 255, 0.6) !important;
 }
 
 .CodeMirror pre {

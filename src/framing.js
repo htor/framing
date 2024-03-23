@@ -5,7 +5,14 @@ import 'codemirror/mode/javascript/javascript'
 import 'codemirror/addon/edit/matchbrackets'
 import 'codemirror/addon/edit/closebrackets'
 import 'codemirror/addon/comment/comment'
-import { getQueryParam, setQueryParam, setFavicon, sleep, strToBase64, base64ToStr } from './utils'
+import {
+  getQueryParam,
+  setQueryParam,
+  setFavicon,
+  sleep,
+  strToBase64,
+  base64ToStr,
+} from './utils'
 import * as lang from './lang'
 
 const SERVER_URL = 'https://framing.neocities.org'
@@ -31,29 +38,31 @@ for(x=0;x<w;x+=s) {
 }
 `
 
-function setup () {
+function setup() {
   mainCanvas.width = offCanvas.width = window.innerWidth
   mainCanvas.height = offCanvas.height = window.innerHeight
-  editor = editor || CodeMirror(code, {
-    mode: {
-      name: 'javascript',
-      globalVars: true
-    },
-    lineWrapping: true,
-    scrollbarStyle: 'null',
-    matchBrackets: true,
-    autoCloseBrackets: true,
-    extraKeys: {
-      'Cmd-Enter': () => saveCode(editor),
-      'Ctrl-Enter': () => saveCode(editor),
-      'Tab': () => CodeMirror.commands.indentMore(editor),
-      'Shift-Tab': () => CodeMirror.commands.indentLess(editor),
-      'Ctrl-L': () => selectLine(editor),
-      'Ctrl-D': () => duplicateLine(editor),
-      'Ctrl-K': () => CodeMirror.commands.toggleComment(editor),
-      'Ctrl-H': () => {}
-    }
-  })
+  editor =
+    editor ||
+    CodeMirror(code, {
+      mode: {
+        name: 'javascript',
+        globalVars: true,
+      },
+      lineWrapping: true,
+      scrollbarStyle: 'null',
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      extraKeys: {
+        'Cmd-Enter': () => saveCode(editor),
+        'Ctrl-Enter': () => saveCode(editor),
+        Tab: () => CodeMirror.commands.indentMore(editor),
+        'Shift-Tab': () => CodeMirror.commands.indentLess(editor),
+        'Ctrl-L': () => selectLine(editor),
+        'Ctrl-D': () => duplicateLine(editor),
+        'Ctrl-K': () => CodeMirror.commands.toggleComment(editor),
+        'Ctrl-H': () => {},
+      },
+    })
   isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
   editor.setValue(id ? base64ToStr(id) : defaultCode)
@@ -62,13 +71,13 @@ function setup () {
   nav.toggleAttribute('hidden', isHidden)
 }
 
-function duplicateLine (editor) {
+function duplicateLine(editor) {
   const cursor = editor.getCursor()
   const line = editor.getLine(cursor.line)
   editor.replaceRange(`\n${line}`, { line: cursor.line })
 }
 
-function selectLine (editor) {
+function selectLine(editor) {
   const cursor = editor.getCursor()
   const from = { line: cursor.line, ch: 0 }
   const to = { line: cursor.line + (editor.somethingSelected() ? 1 : 0) }
@@ -77,13 +86,13 @@ function selectLine (editor) {
   editor.setExtending(false)
 }
 
-function toggleHelp () {
+function toggleHelp() {
   help.toggleAttribute('hidden')
   toggleCode()
   if (!help.hidden) help.focus()
 }
 
-function toggleCode () {
+function toggleCode() {
   isHidden = !isHidden
   code.toggleAttribute('hidden', isHidden)
   nav.toggleAttribute('hidden', isHidden)
@@ -91,15 +100,15 @@ function toggleCode () {
   if (!isHidden) editor.focus()
 }
 
-function toggleFullscreen () {
-  if (document.fullscreenElement)  {
+function toggleFullscreen() {
+  if (document.fullscreenElement) {
     document.exitFullscreen()
   } else {
     document.documentElement.requestFullscreen()
   }
 }
 
-function saveCode (editor, updateUrl = true) {
+function saveCode(editor, updateUrl = true) {
   const code = editor.getValue()
   lang.evalCode(code)
   if (code !== lastCode && updateUrl) {
@@ -109,13 +118,14 @@ function saveCode (editor, updateUrl = true) {
   }
 }
 
-async function loadHelp () {
+async function loadHelp() {
   const response = await fetch('help.md')
   const text = await response.text()
   const lines = text.split('\n')
   const newLines = []
   for (let i = 0; i < lines.length; i++) {
-    if (lines[i].startsWith('# ')) newLines.push(`<h1>${lines[i].slice(1)}</h1>`)
+    if (lines[i].startsWith('# '))
+      newLines.push(`<h1>${lines[i].slice(1)}</h1>`)
     else if (lines[i].trim()) newLines.push(`<p>${lines[i]}</p>`)
   }
   help.insertAdjacentHTML('afterbegin', `${newLines.join('\n')}`)
@@ -129,10 +139,10 @@ function main() {
   window.addEventListener('click', async ({ target }) => {
     if (target.id === 'help' || target.id === 'close') toggleHelp()
     if (target.id === 'share') {
-      let buttonText = target.textContent
+      const buttonText = target.textContent
       target.textContent = 'Link copied!'
       await copyToClip(`${SERVER_URL}/${window.location.search}`)
-      sleep(2000, () => target.textContent = buttonText)
+      sleep(2000, () => (target.textContent = buttonText))
     } else {
       editor.focus()
     }

@@ -1,6 +1,6 @@
-import { compress, decompress } from "@blu3r4y/lzma"
+import { compress, decompress } from '@blu3r4y/lzma'
 
-export function vendorPrefix (prop, target) {
+export function vendorPrefix(prop, target) {
   const prefixes = ['', 'ms', 'moz', 'webkit']
   for (let i = 0; i < prefixes.length; i++) {
     const ident = `${prefixes[i]}${prop.charAt(0).toUpperCase()}${prop.slice(1)}`
@@ -9,18 +9,18 @@ export function vendorPrefix (prop, target) {
   }
 }
 
-export function getQueryParam (name) {
+export function getQueryParam(name) {
   return new URLSearchParams(location.search).get(name)
 }
 
-export function setQueryParam (name, value) {
+export function setQueryParam(name, value) {
   const params = new URLSearchParams(window.location.search)
   params.set(name, value)
   const newUrl = `${window.location.origin}${window.location.pathname}?${params}`
   window.history.pushState({ path: newUrl }, '', newUrl)
 }
 
-export function setFavicon () {
+export function setFavicon() {
   setTimeout(() => {
     const canvas = document.querySelector('canvas')
     const favicon = document.querySelector('[rel=icon]')
@@ -40,13 +40,13 @@ export function sleep(millis, callback) {
 }
 
 export function strToBase64(str) {
-  const compBytes = Uint8Array.from(compress(str));
-  return btoa(String.fromCharCode.apply(null, compBytes));
+  const compBytes = Uint8Array.from(compress(str))
+  return btoa(String.fromCharCode.apply(null, compBytes))
 }
 
 export function base64ToStr(str) {
-  const compBytes = Uint8Array.from(atob(str), (m) => m.charCodeAt(0));
-  return decompress(compBytes);
+  const compBytes = Uint8Array.from(atob(str), (m) => m.charCodeAt(0))
+  return decompress(compBytes)
 }
 
 vendorPrefix('exitFullscreen', document)
