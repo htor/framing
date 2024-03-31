@@ -1,4 +1,4 @@
-# KEYBOARD
+# Keyboard
 
 ESC - show/hide help window
 CMD/CTRL+ENTER - save and evaluate code
@@ -9,7 +9,7 @@ CTRL+D - duplicate current line
 CTRL+K - comment/uncomment current selection
 CTRL+L - select current line(s)
 
-# VARIABLES
+# Globals
 
 w – window width
 h - window height
@@ -19,7 +19,7 @@ PI - Math.PI
 TWO_PI - Math.TWO_PI
 ctx – canvas context object
 
-# FUNCTIONS
+# Functions
 
 sin(n)
 cos(n)
@@ -88,3 +88,7 @@ treset()
 font(style)
 ftext(text, x, y maxWidth?)
 stext(text, x, y maxWidth?)
+
+# Source code
+
+<a href="https://github.com/htor/framing" target="_blank">https://github.com/htor/framing</a>

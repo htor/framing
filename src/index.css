@@ -1,130 +1,144 @@
+@font-face {
+    font-family: zme;
+    src: url('zme.woff2') format('woff2');
+}
+
 :root {
-  --color-gray: #f1f1f1;
+    --color-gray: #f1f1f1;
 }
 
 :focus-visible {
-  outline: 0;
+    outline: 0;
 }
 
 html,
 body {
-  min-height: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font: 16px/1.1 monospace;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    min-height: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font:
+        16px/1.1 zme,
+        monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
 }
 
 code {
-  position: absolute;
-  top: 1.6rem;
-  left: 1.6rem;
-  bottom: 4rem;
+    position: absolute;
+    top: 1.6rem;
+    left: 1.6rem;
+    bottom: 4rem;
 }
 
 output {
-  background: black;
-  color: white;
+    background: black;
+    color: white;
 }
 
 button {
-  appearance: none;
-  background: black;
-  border: none;
-  color: white;
-  font: inherit;
-  cursor: pointer;
+    appearance: none;
+    background: black;
+    border: none;
+    color: white;
+    font: inherit;
+    cursor: pointer;
 }
 
 button#close {
-  position: fixed;
-  bottom: 1.6rem;
-  left: 1.6rem;
+    position: fixed;
+    bottom: 1.6rem;
+    left: 1.6rem;
 }
 
 nav {
-  position: absolute;
-  bottom: 1.6rem;
-  left: 1.6rem;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
+    position: absolute;
+    bottom: 1.6rem;
+    left: 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 aside {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 2em 2em 4em;
-  background: var(--color-gray);
-  color: black;
-  opacity: 1;
-  transition: 0.2s all;
-  font-size: 1rem;
-  overflow: auto;
-  z-index: 5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2em 2em 4em;
+    background: var(--color-gray);
+    color: black;
+    opacity: 1;
+    transition: 0.2s all;
+    font-size: 1rem;
+    overflow: auto;
+    z-index: 5;
 }
 
 aside h1 {
-  display: inline-block;
-  margin: 0;
+    display: inline-block;
+    margin: 0;
+    font: inherit;
+    font-weight: bold;
 }
 
 aside p {
-  margin: 0;
+    margin: 0;
 }
 
 aside h1 + p {
-  margin-top: 0.6em;
+    margin-top: 0.6em;
 }
 
 aside p + h1 {
-  margin-top: 1.2em;
+    margin-top: 1.2em;
 }
 
 code[hidden],
 nav[hidden],
 section[hidden] {
-  display: block;
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
+    display: block;
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
 }
 
 .CodeMirror {
-  min-height: calc(100vh - 6em);
-  line-height: 1.16;
-  background: transparent;
+    min-height: calc(100vh - 6em);
+    line-height: 1.16;
+    background: transparent;
 }
 
 .CodeMirror-selected,
 .CodeMirror-line::selection,
 .CodeMirror-line > span::selection,
 .CodeMirror-line > span > span::selection {
-  background: rgba(255, 255, 255, 0.6) !important;
+    background: rgba(255, 255, 255, 0.6) !important;
 }
 
 .CodeMirror pre {
-  z-index: 0;
-  padding: 0;
+    z-index: 0;
+    padding: 0;
+    font-family: zme;
 }
 
 .CodeMirror-cursor {
-  border-left: 3px solid white !important;
-  z-index: 1 !important;
+    border-left: 3px solid white !important;
+    z-index: 1 !important;
 }
 
 .CodeMirror-line span {
-  background: black;
-  padding: 0 !important;
-  color: white !important;
+    background: black;
+    padding: 0 !important;
+    color: white !important;
 }
 
 .CodeMirror-lines {
-  padding: 0 !important;
+    padding: 0 !important;
 }
