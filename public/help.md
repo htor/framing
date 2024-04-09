@@ -1,13 +1,13 @@
 # Keyboard
 
-ESC - show/hide help window
-CMD/CTRL+ENTER - save and evaluate code
-BROWSER BACK/FORWARD - moves through save history
-CTRL+H - toggle hiding code and output
-CTRL+F - toggle fullscreen mode
-CTRL+D - duplicate current line
-CTRL+K - comment/uncomment current selection
-CTRL+L - select current line(s)
+Cmd/Ctrl+Enter - save and evaluate code
+Browser back/forward - moves through save history
+Ctrl+H - toggle hiding code and output
+Ctrl+F - toggle fullscreen mode
+Ctrl+D - duplicate current line
+Ctrl+K - comment/uncomment current selection
+Ctrl+L - select current line(s)
+Escape - show/hide this help window
 
 # Globals
 
@@ -89,6 +89,6 @@ font(style)
 ftext(text, x, y maxWidth?)
 stext(text, x, y maxWidth?)
 
-# Source code
+# Code
 
 <a href="https://github.com/htor/framing" target="_blank">https://github.com/htor/framing</a>

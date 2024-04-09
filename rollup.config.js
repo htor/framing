@@ -9,7 +9,7 @@ export default {
   input: 'src/framing.js',
   output: {
     file: 'dist/framing.js',
-    format: 'cjs',
+    format: 'cjs'
   },
   plugins: [
     postcss({ minimize: { preset: 'default' } }),
@@ -18,10 +18,10 @@ export default {
     buble({ transforms: { asyncAwait: false } }),
     copy({ targets: [{ src: ['public/*', 'src/index.html'], dest: 'dist' }] }),
     process.env.ROLLUP_WATCH &&
-      serve({ contentBase: 'dist', port: 8080, open: true }),
+      serve({ contentBase: 'dist', port: 8080, open: false })
   ],
   onwarn: (message) => {
     if (/Use of eval/.test(message)) return
     console.error(message.toString())
-  },
+  }
 }

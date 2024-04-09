@@ -21,6 +21,8 @@ body {
     font:
         16px/1.1 zme,
         monospace;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -82,8 +84,7 @@ aside {
 }
 
 aside h1 {
-    display: inline-block;
-    margin: 0;
+    margin: 0 0 1rem;
     font: inherit;
     font-weight: bold;
 }

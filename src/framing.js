@@ -11,7 +11,7 @@ import {
   setFavicon,
   sleep,
   strToBase64,
-  base64ToStr,
+  base64ToStr
 } from './utils'
 import * as lang from './lang'
 
@@ -46,7 +46,7 @@ function setup() {
     CodeMirror(code, {
       mode: {
         name: 'javascript',
-        globalVars: true,
+        globalVars: true
       },
       lineWrapping: true,
       scrollbarStyle: 'null',
@@ -60,8 +60,8 @@ function setup() {
         'Ctrl-L': () => selectLine(editor),
         'Ctrl-D': () => duplicateLine(editor),
         'Ctrl-K': () => CodeMirror.commands.toggleComment(editor),
-        'Ctrl-H': () => {},
-      },
+        'Ctrl-H': () => {}
+      }
     })
   isHidden = getQueryParam('hidden') === 'true'
   const id = getQueryParam('id')
