@@ -124,7 +124,7 @@ section[hidden] {
 }
 
 .CodeMirror pre {
-    z-index: 0;
+    z-index: 0 !important;
     padding: 0;
     font-family: zme !important;
 }
