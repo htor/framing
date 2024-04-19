@@ -45,7 +45,9 @@ export function strToBase64(str) {
 }
 
 export function base64ToStr(str) {
-  const compBytes = Uint8Array.from(atob(str), (m) => m.charCodeAt(0))
+  const compBytes = Uint8Array.from(atob(decodeURIComponent(str)), (m) =>
+    m.charCodeAt(0)
+  )
   return decompress(compBytes)
 }
 

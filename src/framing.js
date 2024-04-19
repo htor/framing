@@ -113,7 +113,7 @@ function saveCode(editor, updateUrl = true) {
   lang.evalCode(code)
   if (code !== lastCode && updateUrl) {
     lastCode = code
-    setQueryParam('id', strToBase64(code))
+    setQueryParam('id', encodeURIComponent(strToBase64(code)))
     setFavicon()
   }
 }
